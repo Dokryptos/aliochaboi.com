@@ -9,8 +9,28 @@ export default {
   theme: {
     extend: {
       colors: {
+        themeColor: {
+          DEFAULT: "#92AE87",
+        },
         background: "var(--background)",
         foreground: "var(--foreground)",
+      },
+      width: {
+        tablet: "640px",
+        laptop: "1024px",
+        desktop: "1440px",
+      },
+      maxWidth: {
+        tablet: "640px",
+        laptop: "1024px",
+        desktop: "1440px",
+      },
+      screens: {
+        tablet: "640px",
+        laptop: "1024px",
+        desktop: "1440px",
+        "pointer-fine": { raw: "(pointer: fine)" },
+        "pointer-coarse": { raw: "(pointer: coarse)" },
       },
     },
   },
