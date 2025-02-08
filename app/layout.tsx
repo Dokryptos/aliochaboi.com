@@ -6,5 +6,9 @@ type Props = {
 };
 
 export default function RootLayout({ children }: Props) {
-  return children;
+  return (
+    <html>
+      <body>{children}</body>
+    </html>
+  );
 }
