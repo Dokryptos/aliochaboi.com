@@ -3,6 +3,7 @@ import { sanityFetch } from "@/sanity/lib/live";
 import Navbar from "@/components/layouts/navbar";
 import Intro from "@/components/intro";
 import Home from "@/components/home";
+import { Suspense } from "react";
 
 const EVENTS_QUERY = defineQuery(`*[
   _type == "project"
@@ -11,12 +12,14 @@ const EVENTS_QUERY = defineQuery(`*[
 
 export default async function HomePage() {
   const { data } = await sanityFetch({ query: EVENTS_QUERY });
-  console.log(data);
+  // console.log(data);
   return (
     <main className="">
       <Intro />
       <Navbar />
-      <Home />
+      <Suspense fallback={<p>En cours de chargement...</p>}>
+        <Home projectData={data} />
+      </Suspense>
     </main>
   );
 }
