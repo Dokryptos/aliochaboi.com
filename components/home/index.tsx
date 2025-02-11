@@ -35,6 +35,8 @@ export default function Home({ projectData }: ProjectDataProps) {
     }
   }, [index, projectData]);
 
+  if (!projectData.length || !projectData[index]) return null;
+
   return (
     <div>
       <motion.div
@@ -49,30 +51,24 @@ export default function Home({ projectData }: ProjectDataProps) {
           alt="Carroussel project Home"
         />
       </motion.div>
-      <button
-        onClick={prevProject}
-        className="absolute left-5 p-2 bg-black/50 text-white rounded-full"
-      >
-        ←
-      </button>
-
-      {/* Bouton suivant */}
-      <button
-        onClick={nextProject}
-        className="absolute right-5 p-2 bg-black/50 text-white rounded-full"
-      >
-        →
-      </button>
-      <motion.div
-        key={projectData[index].title}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        transition={{ duration: 0.5 }}
-        className="absolute bottom-5 bg-black/70 text-white px-4 py-2 rounded-md"
-      >
-        {projectData[index].title}
-      </motion.div>
+      <div className="flex justify-between align-middle">
+        <button onClick={prevProject} className="p-2 text-black">
+          Prev
+        </button>
+        <motion.div
+          key={projectData[index].title}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.5 }}
+          className="p-2 text-black"
+        >
+          {projectData[index].title}
+        </motion.div>
+        <button onClick={nextProject} className="p-2  text-black">
+          Next
+        </button>
+      </div>
     </div>
   );
 }
