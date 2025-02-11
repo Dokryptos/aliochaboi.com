@@ -1,16 +1,14 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import ProjectType from "@/types/project";
-import { UIImageSanity } from "../ui/image/sanity";
 import { urlForImage } from "@/sanity/lib/image";
+import Image from "next/image";
 
 type ProjectDataProps = {
   projectData: ProjectType[]; // Liste de tous les projets
 };
 export default function Home({ projectData }: ProjectDataProps) {
-  console.log(projectData);
-
   const [index, setIndex] = useState(0);
   const nextProject = () => {
     setIndex((prevIndex) => (prevIndex + 1) % projectData.length);
@@ -22,37 +20,36 @@ export default function Home({ projectData }: ProjectDataProps) {
     );
   };
 
-  useEffect(() => {
-    if (projectData.length > 0 && projectData[index]?.thumbnail?.asset) {
-      // Preload the next image for smooth transitions
-      const img = new Image();
-      img.src = urlForImage(projectData[index].thumbnail.asset)
-        .fit("max")
-        .maxWidth(1440)
-        .maxHeight(1440)
-        .quality(75)
-        .url();
-    }
-  }, [index, projectData]);
-
   if (!projectData.length || !projectData[index]) return null;
 
+  console.log(projectData[index].thumbnail.asset);
+
   return (
-    <div>
+    <div className="relative flex-col items-center w-screen h-screen ">
       <motion.div
+        className="ml-28 mr-28 absolute flex items-center justify-center"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 1.1 }}
         transition={{ duration: 0.5 }}
       >
-        <UIImageSanity
-          key={projectData[index]._id}
-          asset={projectData[index].thumbnail.asset}
-          alt="Carroussel project Home"
+        <Image
+          src={urlForImage(projectData[index].thumbnail)
+            .fit("max")
+            .maxWidth(1440)
+            .maxHeight(1440)
+            .quality(80)
+            .url()}
+          alt="Carrousel Project Home"
+          width={1440}
+          height={960}
+          className="object-contain max-w-[90vw] max-h-[90vh]"
+          priority={index === 0} // Charge la première image immédiatement
         />
       </motion.div>
-      <div className="flex justify-between align-middle">
-        <button onClick={prevProject} className="p-2 text-black">
+
+      <div className="absolute w-full bottom-0 flex justify-between items-center">
+        <button onClick={prevProject} className="p-5 text-black">
           Prev
         </button>
         <motion.div
