@@ -4,14 +4,19 @@ import Link from "next/link";
 
 export default function LayoutNavbar() {
   return (
-    <nav className="flex fixed p-4">
-      <div>
+    <nav className="flex fixed p-4 w-full bg-white">
+      <div className="w-[50%] tablet:flex hidden">
         <Link href="/">Aliocha Boi</Link>
       </div>
-      <div>
+      <div className="flex justify-between tablet:w-[50%] w-full">
         <Link href="/index">Index</Link>
-        <Link href="/info">Infos</Link>
-        <Link href="/book"></Link>
+        <Link
+          href="/info"
+          className="ml-[37px] laptop:ml-0 laptop:mr-[100px] tablet:mr-[18px]"
+        >
+          Infos
+        </Link>
+        <Link href="/book">Books</Link>
       </div>
     </nav>
   );

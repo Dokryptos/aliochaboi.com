@@ -7,7 +7,7 @@ import Home from "@/components/home";
 const EVENTS_QUERY = defineQuery(`*[
   _type == "project"
   && defined(slug.current)
-]{_id, title, slug, description, thumbnail, gallery, tags, details, shortTitle }`);
+]{_id, title, slug, thumbnail, gallery, shortTitle }`);
 
 export default async function HomePage() {
   const { data } = await sanityFetch({ query: EVENTS_QUERY });

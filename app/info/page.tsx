@@ -1,13 +1,3 @@
-import Navbar from "@/components/layouts/navbar";
-import Intro from "@/components/intro";
-import Home from "@/components/home";
-
-export default async function HomePage() {
-  return (
-    <>
-      <Intro />
-      <Navbar />
-      <Home />
-    </>
-  );
+export default async function Info() {
+  return <div></div>;
 }
