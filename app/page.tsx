@@ -1,5 +1,14 @@
-import { redirect } from "next/navigation";
+import Home from "@/components/home";
+import Intro from "@/components/intro";
+import { Suspense } from "react";
 
-export default function RootPage() {
-  redirect("/");
+export default async function HomePage() {
+  return (
+    <>
+      <Intro />
+      <Suspense>
+        <Home />
+      </Suspense>
+    </>
+  );
 }
