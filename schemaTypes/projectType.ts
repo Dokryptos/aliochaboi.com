@@ -38,15 +38,6 @@ export const projectType = defineType({
       description: "The slug is the url path of the project",
     }),
     defineField({
-      name: "description",
-      title: "Description",
-      type: "array",
-      validation: (rule) =>
-        rule.required().error(`Required to generate a page on the website`),
-      of: [defineArrayMember({ type: "block", name: "block" })],
-      description: "Write the description of your project",
-    }),
-    defineField({
       name: "thumbnail",
       title: "Thumbnail",
       type: "image",
@@ -76,18 +67,6 @@ export const projectType = defineType({
         //   name: "video",
         // }),
       ],
-    }),
-    defineField({
-      name: "tags",
-      title: "Tags",
-      type: "array",
-      of: [defineArrayMember({ type: "string", name: "tag" })],
-      description: "Tags for the project",
-    }),
-    defineField({
-      name: "details",
-      type: "array",
-      of: [{ type: "block" }],
     }),
   ],
 });

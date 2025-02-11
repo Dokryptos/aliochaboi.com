@@ -8,8 +8,10 @@ type Props = {
 export default function RootLayout({ children }: Props) {
   return (
     <html>
-      <body>{children}</body>
-      <SanityLive />
+      <body>
+        {children}
+        <SanityLive />
+      </body>
     </html>
   );
 }

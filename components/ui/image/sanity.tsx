@@ -1,5 +1,5 @@
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import { urlForImage } from "../../../sanity/lib/image";
+import { urlForImage } from "@/sanity/lib/image";
 import Image from "next/image";
 
 export type UIImageSanityProps = {
@@ -26,7 +26,7 @@ export const UIImageSanity = ({
     .fit("max")
     .maxWidth(1440)
     .maxHeight(1440)
-    .quality(75)
+    .quality(100)
     .url();
 
   return (
