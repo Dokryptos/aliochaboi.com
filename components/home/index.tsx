@@ -10,6 +10,9 @@ type ProjectDataProps = {
 };
 export default function Home({ projectData }: ProjectDataProps) {
   const [index, setIndex] = useState(0);
+
+  if (!projectData.length || !projectData[index]) return null;
+
   const nextProject = () => {
     setIndex((prevIndex) => (prevIndex + 1) % projectData.length);
   };
@@ -20,17 +23,15 @@ export default function Home({ projectData }: ProjectDataProps) {
     );
   };
 
-  if (!projectData.length || !projectData[index]) return null;
-
   console.log(projectData[index].thumbnail.asset);
 
   return (
-    <div className="relative flex-col items-center w-screen h-screen ">
+    <div className="relative flex items-center justify-center w-screen h-screen overflow-hidden">
       <motion.div
-        className="ml-28 mr-28 absolute flex items-center justify-center"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 1.1 }}
+        className="absolute inset-0 flex items-center justify-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
       >
         <Image
@@ -43,13 +44,16 @@ export default function Home({ projectData }: ProjectDataProps) {
           alt="Carrousel Project Home"
           width={1440}
           height={960}
-          className="object-contain max-w-[90vw] max-h-[90vh]"
+          className="object-contain max-w-[90vw] max-h-[75vh]"
           priority={index === 0} // Charge la première image immédiatement
         />
       </motion.div>
 
-      <div className="absolute w-full bottom-0 flex justify-between items-center">
-        <button onClick={prevProject} className="p-5 text-black">
+      <div className="absolute w-full p-5 bottom-0 flex justify-center tablet:justify-between items-center">
+        <button
+          onClick={prevProject}
+          className=" text-black tablet:block hidden"
+        >
           Prev
         </button>
         <motion.div
@@ -58,11 +62,14 @@ export default function Home({ projectData }: ProjectDataProps) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.5 }}
-          className="p-2 text-black"
+          className="text-black"
         >
           {projectData[index].title}
         </motion.div>
-        <button onClick={nextProject} className="p-2  text-black">
+        <button
+          onClick={nextProject}
+          className=" text-black tablet:block hidden"
+        >
           Next
         </button>
       </div>
