@@ -1,14 +1,13 @@
 import Home from "@/components/home";
 import Intro from "@/components/intro";
-import { Suspense } from "react";
+import Navbar from "@/components/layouts/navbar";
 
 export default async function HomePage() {
   return (
     <>
       <Intro />
-      <Suspense>
-        <Home />
-      </Suspense>
+      <Navbar />
+      <Home />
     </>
   );
 }
