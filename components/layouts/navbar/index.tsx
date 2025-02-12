@@ -4,11 +4,11 @@ import Link from "next/link";
 
 export default function LayoutNavbar() {
   return (
-    <nav className="flex fixed top-0 left-0 p-5 w-full bg-white z-10">
-      <div className="w-1/2 tablet:flex hidden">
+    <nav className="flex fixed top-0 left-0 p-4 w-full bg-white z-10">
+      <div className="w-[50%] tablet:flex hidden">
         <Link href="/">Aliocha Boi</Link>
       </div>
-      <div className="flex justify-between tablet:w-1/2 w-full">
+      <div className="flex justify-between tablet:w-[50%] w-full">
         <Link href="/index">Index</Link>
         <Link
           href="/info"

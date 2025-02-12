@@ -28,10 +28,10 @@ export default function Home({ projectData }: ProjectDataProps) {
   console.log(projectData[index].thumbnail.asset);
 
   return (
-    <Grid className="gap-5 px-5 tablet:px-0 w-screen h-screen overflow-hidden">
-      <div className="laptop:col-start-3 laptop:col-span-8 col-start-1 col-span-4 tablet:col-start-2 tablet:col-span-7 flex justify-center h-screen">
+    <Grid className="gap-5 tablet:px-0 h-screen overflow-hidden">
+      <div className="p-5 laptop:col-start-3 laptop:col-span-8 col-start-1 col-span-4 tablet:col-start-2 tablet:col-span-7 flex">
         <motion.div
-          className="laptop: inset-0 flex items-center justify-center"
+          className="inset-0 flex items-center justify-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -47,7 +47,7 @@ export default function Home({ projectData }: ProjectDataProps) {
             alt="Carrousel Project Home"
             width={1440}
             height={960}
-            className="object-contain w-full h-auto max-w-full max-h-[65%] "
+            className="object-contain max-w-full max-h-[67%]"
             priority={index === 0} // Charge la première image immédiatement
           />
         </motion.div>
