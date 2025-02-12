@@ -1,6 +1,5 @@
 import { defineQuery } from "next-sanity";
 import { sanityFetch } from "@/sanity/lib/live";
-import Navbar from "@/components/layouts/navbar";
 import Intro from "@/components/intro";
 import Home from "@/components/home";
 import { Suspense } from "react";
@@ -15,7 +14,6 @@ export default async function HomePage() {
   return (
     <main>
       <Intro />
-      <Navbar />
       <Suspense fallback={<p>En cours de chargement...</p>}>
         <Home projectData={data} />
       </Suspense>

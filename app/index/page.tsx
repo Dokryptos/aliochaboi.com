@@ -11,17 +11,16 @@ const EVENTS_QUERY = defineQuery(`*[
 export default async function IndexPage() {
   const { data } = await sanityFetch({ query: EVENTS_QUERY });
   return (
-    <div className="">
-      {data.map((project: ProjectType) => (
-        <li className="" key={project._id}>
-          <Link
-            className="hover:underline"
-            href={`/project/${project?.slug?.current}`}
-          >
-            <h2 className="text-xl font-semibold">{project?.title}</h2>
-          </Link>
-        </li>
-      ))}
+    <div className="mt-[84px]">
+      <div className="flex">
+        {data.map((project: ProjectType) => (
+          <div key={project._id}>
+            <Link className="" href={`/index/${project?.slug?.current}`}>
+              <h2 className="">{project?.title}/</h2>
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
