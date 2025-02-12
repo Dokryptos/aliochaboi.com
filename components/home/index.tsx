@@ -58,13 +58,13 @@ export default function Home({ projectData }: ProjectDataProps) {
         onNext={nextProject} // Passer la fonction nextProject en prop
       />
 
-      <div className="absolute w-full pb-4 p-5 bottom-0 flex laptop:justify-center tablet:justify-between tablet:items-center">
-        <div className="w-1/2 tablet:block hidden">
+      <div className="absolute w-full pb-4 gap-6 p-5 bottom-0 grid grid-cols-4 tablet:grid-cols-9 laptop:grid-cols-12">
+        <div className="laptop:col-start-1 laptop:col-span-6 tablet:block hidden">
           <button onClick={prevProject} className=" text-black ">
             Prev
           </button>
         </div>
-        <div className="tablet:w-1/2 flex justify-between">
+        <div className="laptop:col-start-7 laptop:col-span-6 tablet:col-start-5 tablet:col-span-5 flex justify-between">
           <motion.div
             key={projectData[index].title}
             initial={{ opacity: 0 }}
