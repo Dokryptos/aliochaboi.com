@@ -5,6 +5,7 @@ import ProjectType from "@/types/project";
 import { urlForImage } from "@/sanity/lib/image";
 import Image from "next/image";
 import Grid from "../ui/grid";
+import CarouselNavigation from "@/components/carousel/navigation";
 
 type ProjectDataProps = {
   projectData: ProjectType[]; // Liste de tous les projets
@@ -51,13 +52,19 @@ export default function Home({ projectData }: ProjectDataProps) {
           />
         </motion.div>
       </div>
+
+      <CarouselNavigation
+        onPrev={prevProject} // Passer la fonction prevProject en prop
+        onNext={nextProject} // Passer la fonction nextProject en prop
+      />
+
       <div className="absolute w-full pb-4 tablet:p-5 bottom-0 flex laptop:justify-center tablet:justify-between tablet:items-center">
-        <div className="w-[50%] tablet:block hidden">
+        <div className="w-1/2 tablet:block hidden">
           <button onClick={prevProject} className=" text-black ">
             Prev
           </button>
         </div>
-        <div className="tablet:w-[50%] flex justify-between">
+        <div className="tablet:w-1/2 flex justify-between">
           <motion.div
             key={projectData[index].title}
             initial={{ opacity: 0 }}
