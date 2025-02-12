@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+/** @type {import('tailwindcss').Config} */
 
 export default {
   content: [
@@ -9,9 +10,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        NeueGroteskItalic: ["Neue-grotesk-italic", "sans-serif"],
-        NeueGrotesk: ["Neue-grotesk", "sans-serif"],
-        PPeiko: ["PPeiko-thin", "sans-serif"],
+        neueGrotesk: ["var(--font-neueHaal)"],
+        ppeiko: ["var(--font-ppeiko)"],
       },
       colors: {
         themeColor: {

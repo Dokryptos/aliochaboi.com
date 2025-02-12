@@ -12,7 +12,7 @@ interface ProjectListProps {
 export default function ProjectList({ projectArray }: ProjectListProps) {
   const { viewMode } = useViewMode();
   return (
-    <div className="mt-[84px] pl-5 pr-5">
+    <div className="mt-[84px] pl-5 pr-5 font-ppeiko">
       <div className="">
         {viewMode === "grid" ? (
           <Grid>

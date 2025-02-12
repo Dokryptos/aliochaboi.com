@@ -12,7 +12,7 @@ const EVENTS_QUERY = defineQuery(`*[
 export default async function HomePage() {
   const { data } = await sanityFetch({ query: EVENTS_QUERY });
   return (
-    <main>
+    <main className="font-neueGrotesk">
       <Intro />
       <Suspense fallback={<p>En cours de chargement...</p>}>
         <Home projectData={data} />

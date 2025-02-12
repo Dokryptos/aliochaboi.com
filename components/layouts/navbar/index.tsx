@@ -13,7 +13,9 @@ export default function LayoutNavbar() {
     pathname === "/info" ? "bg-themeColor" : "bg-white transition-colors";
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-10 ${bgColor}`}>
+    <nav
+      className={`fixed top-0 left-0 w-full z-10 font-neueGrotesk text-base/5 laptop:text-xl/[26px]   ${bgColor}`}
+    >
       <Grid className="gap-5">
         <div className="laptop:col-start-1 laptop:col-span-6 tablet:col-span-4 pl-5 tablet:flex hidden ">
           <Link className="pt-5 pb-10" href="/">

@@ -25,7 +25,7 @@ export default function Intro() {
 
       <motion.div className="fixed z-50 inset-0 flex items-center justify-center">
         <motion.h1
-          className="text-black dekstop:text-[70px] tablet:text-[45px] text-[35px] "
+          className="text-black font-neueGrotesk dekstop:text-[70px] tablet:text-[45px] text-[35px] "
           initial={{ opacity: 1 }}
           animate={{ opacity: 0 }}
           transition={{ duration: 1.5, delay: 3, ease: "easeOut" }}
