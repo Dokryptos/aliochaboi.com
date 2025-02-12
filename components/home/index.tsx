@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import ProjectType from "@/types/project";
 import { urlForImage } from "@/sanity/lib/image";
 import Image from "next/image";
+import Grid from "../ui/grid";
 
 type ProjectDataProps = {
   projectData: ProjectType[]; // Liste de tous les projets
@@ -26,53 +27,59 @@ export default function Home({ projectData }: ProjectDataProps) {
   console.log(projectData[index].thumbnail.asset);
 
   return (
-    <div className="relative flex items-center justify-center w-screen h-screen overflow-hidden">
-      <motion.div
-        className="absolute inset-0 flex items-center justify-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <Image
-          src={urlForImage(projectData[index].thumbnail)
-            .fit("max")
-            .maxWidth(1440)
-            .maxHeight(1440)
-            .quality(80)
-            .url()}
-          alt="Carrousel Project Home"
-          width={1440}
-          height={960}
-          className="object-contain max-w-[90vw] max-h-[75vh]"
-          priority={index === 0} // Charge la première image immédiatement
-        />
-      </motion.div>
-
-      <div className="absolute w-full p-5 bottom-0 flex justify-center tablet:justify-between items-center">
-        <button
-          onClick={prevProject}
-          className=" text-black tablet:block hidden"
-        >
-          Prev
-        </button>
+    <Grid className="gap-5 px-5 tablet:px-0 w-screen h-screen overflow-hidden">
+      <div className="laptop:col-start-3 laptop:col-span-8 col-start-1 col-span-4 tablet:col-start-2 tablet:col-span-7 flex justify-center h-screen">
         <motion.div
-          key={projectData[index].title}
+          className="laptop: inset-0 flex items-center justify-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-black"
         >
-          {projectData[index].title}
+          <Image
+            src={urlForImage(projectData[index].thumbnail)
+              .fit("max")
+              .maxWidth(1440)
+              .maxHeight(1440)
+              .quality(80)
+              .url()}
+            alt="Carrousel Project Home"
+            width={1440}
+            height={960}
+            className="object-contain w-full h-auto max-w-full max-h-[65%] "
+            priority={index === 0} // Charge la première image immédiatement
+          />
         </motion.div>
-        <button
-          onClick={nextProject}
-          className=" text-black tablet:block hidden"
-        >
-          Next
-        </button>
       </div>
-    </div>
+      <div className="absolute w-full pb-4 tablet:p-5 bottom-0 flex laptop:justify-center tablet:justify-between tablet:items-center">
+        <div className="w-[50%] tablet:block hidden">
+          <button onClick={prevProject} className=" text-black ">
+            Prev
+          </button>
+        </div>
+        <div className="tablet:w-[50%] flex justify-between">
+          <motion.div
+            key={projectData[index].title}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-black flex align-middle"
+          >
+            <p className="mr-2 text-base">{projectData[index].title}</p>
+            <p className="italic text-xs">
+              {index + 1}/{projectData.length}
+            </p>
+          </motion.div>
+
+          <button
+            onClick={nextProject}
+            className=" text-black tablet:block hidden"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    </Grid>
   );
 }
