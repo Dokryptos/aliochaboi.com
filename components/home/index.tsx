@@ -29,7 +29,7 @@ export default function Home({ projectData }: ProjectDataProps) {
 
   return (
     <Grid className="gap-5 tablet:px-0 h-full overflow-hidden">
-      <div className="p-5 tablet:p-0 laptop:col-start-3 laptop:col-span-8 col-start-1 col-span-4 tablet:col-start-2 tablet:col-span-7 flex">
+      <div className="pr-5 pl-5 tablet:p-0 laptop:col-start-3 laptop:col-span-8 col-start-1 col-span-4 tablet:col-start-2 tablet:col-span-7 flex">
         <motion.div
           className="inset-0 flex items-center h-screen justify-center"
           initial={{ opacity: 0 }}
@@ -57,35 +57,36 @@ export default function Home({ projectData }: ProjectDataProps) {
         onPrev={prevProject} // Passer la fonction prevProject en prop
         onNext={nextProject} // Passer la fonction nextProject en prop
       />
+      <div className="absolute w-full pb-5 pt-5 bottom-0">
+        <Grid className="gap-5">
+          <div className="laptop:col-start-1 laptop:col-span-6 tablet:block hidden">
+            <button onClick={prevProject} className=" text-black pl-5">
+              Prev
+            </button>
+          </div>
+          <div className="laptop:col-start-7 laptop:col-span-6 tablet:col-start-5 tablet:col-span-5 col-span-4 flex justify-between">
+            <motion.div
+              key={projectData[index].title}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-black flex items-center pl-5 tablet:pl-0"
+            >
+              <p className="mr-2 text-base">{projectData[index].title}</p>
+              <p className="italic text-xs">
+                {index + 1}/{projectData.length}
+              </p>
+            </motion.div>
 
-      <div className="absolute w-full pb-4 gap-6 p-5 bottom-0 grid grid-cols-4 tablet:grid-cols-9 laptop:grid-cols-12">
-        <div className="laptop:col-start-1 laptop:col-span-6 tablet:block hidden">
-          <button onClick={prevProject} className=" text-black ">
-            Prev
-          </button>
-        </div>
-        <div className="laptop:col-start-7 laptop:col-span-6 tablet:col-start-5 tablet:col-span-5 col-span-4 flex justify-between">
-          <motion.div
-            key={projectData[index].title}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-black flex items-center "
-          >
-            <p className="mr-2 text-base">{projectData[index].title}</p>
-            <p className="italic text-xs">
-              {index + 1}/{projectData.length}
-            </p>
-          </motion.div>
-
-          <button
-            onClick={nextProject}
-            className=" text-black tablet:block hidden"
-          >
-            Next
-          </button>
-        </div>
+            <button
+              onClick={nextProject}
+              className="pr-5 text-black tablet:block hidden"
+            >
+              Next
+            </button>
+          </div>
+        </Grid>
       </div>
     </Grid>
   );
