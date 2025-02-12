@@ -12,9 +12,8 @@ const EVENTS_QUERY = defineQuery(`*[
 
 export default async function HomePage() {
   const { data } = await sanityFetch({ query: EVENTS_QUERY });
-  // console.log(data);
   return (
-    <main className="">
+    <main>
       <Intro />
       <Navbar />
       <Suspense fallback={<p>En cours de chargement...</p>}>

@@ -28,10 +28,10 @@ export default function Home({ projectData }: ProjectDataProps) {
   console.log(projectData[index].thumbnail.asset);
 
   return (
-    <Grid className="gap-5 tablet:px-0 h-screen overflow-hidden">
-      <div className="p-5 laptop:col-start-3 laptop:col-span-8 col-start-1 col-span-4 tablet:col-start-2 tablet:col-span-7 flex">
+    <Grid className="gap-5 tablet:px-0 h-full overflow-hidden">
+      <div className="p-5 tablet:p-0 laptop:col-start-3 laptop:col-span-8 col-start-1 col-span-4 tablet:col-start-2 tablet:col-span-7 flex">
         <motion.div
-          className="inset-0 flex items-center justify-center"
+          className="inset-0 flex items-center h-screen justify-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -47,7 +47,7 @@ export default function Home({ projectData }: ProjectDataProps) {
             alt="Carrousel Project Home"
             width={1440}
             height={960}
-            className="object-contain max-w-full max-h-[67%]"
+            className="object-contain h-auto max-w-full laptop:max-h-[608px] tablet:max-h-[752px] max-h-[80vh]"
             priority={index === 0} // Charge la première image immédiatement
           />
         </motion.div>
@@ -58,7 +58,7 @@ export default function Home({ projectData }: ProjectDataProps) {
         onNext={nextProject} // Passer la fonction nextProject en prop
       />
 
-      <div className="absolute w-full pb-4 tablet:p-5 bottom-0 flex laptop:justify-center tablet:justify-between tablet:items-center">
+      <div className="absolute w-full pb-4 p-5 bottom-0 flex laptop:justify-center tablet:justify-between tablet:items-center">
         <div className="w-1/2 tablet:block hidden">
           <button onClick={prevProject} className=" text-black ">
             Prev
