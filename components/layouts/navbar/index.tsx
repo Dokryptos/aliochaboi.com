@@ -1,13 +1,13 @@
 "use client";
 
 import Grid from "@/components/ui/grid";
+import { useViewMode } from "@/context/ViewModeContext";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
 
 export default function LayoutNavbar() {
   const pathname = usePathname(); // Récupère la route actuelle
-  const [viewMode, setViewMode] = useState<"list" | "grid">("list");
+  const { viewMode, setViewMode } = useViewMode();
 
   const bgColor =
     pathname === "/info" ? "bg-themeColor" : "bg-white transition-colors";
