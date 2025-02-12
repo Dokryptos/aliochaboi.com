@@ -9,16 +9,15 @@ export default function CarouselNavigation({
 }: CarouselNavigationProps) {
   return (
     <div className="absolute inset-0 flex">
-      {/* Zone gauche pour prevProject */}
       <div
         className="w-1/2 h-full cursor-pointer"
-        onClick={onPrev} // Appel de la fonction `onPrev` passée en props
+        onClick={onPrev} // call function `onPrev`  props
       />
 
       {/* Zone droite pour nextProject */}
       <div
         className="w-1/2 h-full cursor-pointer"
-        onClick={onNext} // Appel de la fonction `onNext` passée en props
+        onClick={onNext} // call function `onNext` props
       />
     </div>
   );
