@@ -64,14 +64,14 @@ export default function Home({ projectData }: ProjectDataProps) {
             Prev
           </button>
         </div>
-        <div className="laptop:col-start-7 laptop:col-span-6 tablet:col-start-5 tablet:col-span-5 flex justify-between">
+        <div className="laptop:col-start-7 laptop:col-span-6 tablet:col-start-5 tablet:col-span-5 col-span-4 flex justify-between">
           <motion.div
             key={projectData[index].title}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-black flex align-middle"
+            className="text-black flex items-center "
           >
             <p className="mr-2 text-base">{projectData[index].title}</p>
             <p className="italic text-xs">
