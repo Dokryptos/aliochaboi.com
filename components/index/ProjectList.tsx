@@ -34,13 +34,13 @@ export default function ProjectList({ projectArray }: ProjectListProps) {
                   <UIImageSanity
                     key={project._id}
                     asset={project.thumbnail.asset}
-                    className=""
+                    className="pb-3"
                     alt={`Grid image ${project.title}`}
                   />
                   <h2
-                    className={`${hoveredImageId === project._id ? "opacity-100" : "opacity-0"}`}
+                    className={`opacity-100 ${hoveredImageId === project._id ? "laptop:opacity-100" : "laptop:opacity-0"}`}
                   >
-                    {project?.title}
+                    {project?.title}, {project.gallery.length} Images
                   </h2>
                 </Link>
               </div>
