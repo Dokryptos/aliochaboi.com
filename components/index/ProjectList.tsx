@@ -49,7 +49,7 @@ export default function ProjectList({ projectArray }: ProjectListProps) {
               >
                 <Link href={`/index/${project?.slug?.current}`}>
                   <h2
-                    className={`z-10 flex laptop:text-[42px]/[54px] tablet:text-[25px]/[32px] text-[18px]/[23px]  ${hoveredImageId === project._id ? "text-black" : "text-[#818181]"}`}
+                    className={`z-10 relative flex laptop:text-[42px]/[54px] tablet:text-[25px]/[32px] text-[18px]/[23px]  ${hoveredImageId === project._id ? "text-black" : "text-[#818181]"}`}
                   >
                     {project?.title}
                     <p className="pl-1 pr-1 text-[#818181]">/</p>
@@ -57,16 +57,15 @@ export default function ProjectList({ projectArray }: ProjectListProps) {
                 </Link>
               </div>
             ))}
-            <div className="max-h-[450px] max-w-[350px] fixed bottom-0 z-0 right-0 m-5">
-              <Link href={`/index/${hoveredLink}`}>
-                <UIImageSanity
-                  key={hoveredImageId}
-                  asset={hoveredImage}
-                  alt={`Thumbnail hovered ${hoveredImageId}`}
-                  className="object-contain "
-                />
-              </Link>
-            </div>
+
+            <Link href={`/index/${hoveredLink}`}>
+              <UIImageSanity
+                key={hoveredImageId}
+                asset={hoveredImage}
+                alt={`Thumbnail hovered ${hoveredImageId}`}
+                className="object-contain bottom-5 fixed right-5 z-0 max-h-[450px] max-w-[350px]"
+              />
+            </Link>
           </List>
         )}
       </div>
