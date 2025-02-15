@@ -14,7 +14,7 @@ const ViewModeContext = createContext<ViewModeContextType | undefined>(
 );
 
 export function ViewModeProvider({ children }: { children: ReactNode }) {
-  const [viewMode, setViewMode] = useState<ViewMode>("grid");
+  const [viewMode, setViewMode] = useState<ViewMode>("list");
 
   return (
     <ViewModeContext.Provider value={{ viewMode, setViewMode }}>

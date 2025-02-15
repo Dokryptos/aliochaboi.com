@@ -10,8 +10,8 @@ import CarouselNavigation from "@/components/carousel/navigation";
 type ProjectDataProps = {
   projectData: ProjectType[]; // Liste de tous les projets
 };
-export default function Home({ projectData }: ProjectDataProps) {
-  const [index, setIndex] = useState(0);
+export default function ProjectPage({ projectData }: ProjectDataProps) {
+  const [index, setIndex] = useState<number>(0);
 
   if (!projectData.length || !projectData[index]) return null;
 
@@ -24,6 +24,8 @@ export default function Home({ projectData }: ProjectDataProps) {
       prevIndex === 0 ? projectData.length - 1 : prevIndex - 1
     );
   };
+
+  console.log(projectData[index].thumbnail.asset);
 
   return (
     <Grid className="gap-5 tablet:px-0 h-full overflow-hidden">

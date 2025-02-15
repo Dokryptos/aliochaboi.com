@@ -6,5 +6,5 @@ type GridProps = {
 };
 
 export default function Grid({ children, className = "" }: GridProps) {
-  return <div className={`flex  ${className}`}>{children}</div>;
+  return <div className={`flex flex-wrap ${className}`}>{children}</div>;
 }
