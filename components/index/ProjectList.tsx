@@ -18,8 +18,8 @@ export default function ProjectList({ projectArray }: ProjectListProps) {
   const [hoveredLink, setHoveredLink] = useState(projectArray[0].slug.current);
 
   return (
-    <div className="mt-[84px] pl-5 pr-5 font-ppeiko">
-      <div className="">
+    <div className="mt-[84px] pl-5 pr-5 font-ppeiko font-thin">
+      <div>
         {viewMode === "grid" ? (
           <Grid className="gap-5">
             {projectArray.map((project: ProjectType) => (
@@ -48,9 +48,11 @@ export default function ProjectList({ projectArray }: ProjectListProps) {
                 }}
               >
                 <Link href={`/index/${project?.slug?.current}`}>
-                  <h2 className="z-10 flex laptop:text-[42px]/[54px] tablet:text-[25px]/[32px] text-[18px]/[23px] ">
+                  <h2
+                    className={`z-10 flex laptop:text-[42px]/[54px] tablet:text-[25px]/[32px] text-[18px]/[23px]  ${hoveredImageId === project._id ? "text-black" : "text-[#818181]"}`}
+                  >
                     {project?.title}
-                    <p className="pl-1 pr-1">/</p>
+                    <p className="pl-1 pr-1 text-[#818181]">/</p>
                   </h2>
                 </Link>
               </div>
