@@ -3,9 +3,10 @@ import Link from "next/link";
 import Grid from "@/components/ui/grid/project";
 import List from "@/components/ui/list/index";
 import { useViewMode } from "@/context/ViewModeContext";
-import ProjectType from "@/types/project";
+import ProjectType, { SanityImage } from "@/types/project";
 import { UIImageSanity } from "../ui/image/sanity";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 interface ProjectListProps {
   projectArray: ProjectType[];
@@ -13,17 +14,38 @@ interface ProjectListProps {
 
 export default function ProjectList({ projectArray }: ProjectListProps) {
   const { viewMode } = useViewMode();
-  const [hoveredImage, setHoveredImage] = useState(projectArray[0].thumbnail);
-  const [hoveredImageId, setHoveredImageId] = useState(projectArray[0]._id);
-  const [hoveredLink, setHoveredLink] = useState(projectArray[0].slug.current);
+  const [hoveredImage, setHoveredImage] = useState<SanityImage | null>(null);
+  const [hoveredImageId, setHoveredImageId] = useState<string | null>(null);
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
 
+  const listAnimationVariant = {
+    hidden: { opacity: 0 },
+    visible: (i: number) => ({
+      opacity: 1,
+      transition: { delay: i * 0.2, duration: 0.5 },
+    }),
+  };
+
+  const gridAnimationVariant = {
+    hidden: { opacity: 0 },
+    visible: (i: number) => ({
+      opacity: 1,
+      transition: { delay: i * 0.2, duration: 1 },
+    }),
+  };
   return (
-    <div className="mt-[84px] pl-5 pr-5 font-ppeiko font-thin">
+    <div className="mt-[84px] ml-5 mr-5 font-ppeiko font-thin">
       <div>
         {viewMode === "grid" ? (
-          <Grid className="gap-5">
-            {projectArray.map((project: ProjectType) => (
-              <div key={project._id}>
+          <Grid className="gap-5 gap-y-10">
+            {projectArray.map((project: ProjectType, i: number) => (
+              <motion.div
+                custom={i}
+                initial="hidden"
+                animate="visible"
+                variants={gridAnimationVariant}
+                key={project._id}
+              >
                 <Link
                   className=""
                   href={`/index/${project?.slug?.current}`}
@@ -43,18 +65,27 @@ export default function ProjectList({ projectArray }: ProjectListProps) {
                     {project?.title}, {project.gallery.length} Images
                   </h2>
                 </Link>
-              </div>
+              </motion.div>
             ))}
           </Grid>
         ) : (
           <List>
-            {projectArray.map((project: ProjectType) => (
-              <div
+            {projectArray.map((project: ProjectType, i: number) => (
+              <motion.div
                 key={project._id}
+                custom={i}
+                initial="hidden"
+                animate="visible"
+                variants={listAnimationVariant}
                 onMouseEnter={() => {
                   setHoveredImage(project.thumbnail);
                   setHoveredImageId(project._id);
                   setHoveredLink(project.slug.current);
+                }}
+                onMouseLeave={() => {
+                  setHoveredImage(null);
+                  setHoveredImageId(null);
+                  setHoveredLink(null);
                 }}
               >
                 <Link href={`/index/${project?.slug?.current}`}>
@@ -65,17 +96,18 @@ export default function ProjectList({ projectArray }: ProjectListProps) {
                     <p className="pl-1 pr-1 text-[#818181]">/</p>
                   </h2>
                 </Link>
-              </div>
+              </motion.div>
             ))}
-
-            <Link href={`/index/${hoveredLink}`}>
-              <UIImageSanity
-                key={hoveredImageId}
-                asset={hoveredImage}
-                alt={`Thumbnail hovered ${hoveredImageId}`}
-                className="object-contain bottom-5 fixed right-5 z-0 max-h-[450px] max-w-[350px]"
-              />
-            </Link>
+            {hoveredImage && (
+              <Link href={`/index/${hoveredLink}`}>
+                <UIImageSanity
+                  key={hoveredImageId}
+                  asset={hoveredImage}
+                  alt={`Thumbnail hovered ${hoveredImageId}`}
+                  className="object-contain bottom-5 fixed right-5 z-0 max-h-[450px] max-w-[350px]"
+                />
+              </Link>
+            )}
           </List>
         )}
       </div>

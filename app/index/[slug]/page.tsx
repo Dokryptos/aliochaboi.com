@@ -1,4 +1,4 @@
-import ProjectPage from "@/components/projectPage";
+import ProjectPage from "@/components/index/ProjectPage";
 
 export default function ProductPage() {
   return (
