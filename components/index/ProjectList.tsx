@@ -24,14 +24,24 @@ export default function ProjectList({ projectArray }: ProjectListProps) {
           <Grid className="gap-5">
             {projectArray.map((project: ProjectType) => (
               <div key={project._id}>
-                <Link className="" href={`/index/${project?.slug?.current}`}>
+                <Link
+                  className=""
+                  href={`/index/${project?.slug?.current}`}
+                  onMouseEnter={() => {
+                    setHoveredImageId(project._id);
+                  }}
+                >
                   <UIImageSanity
                     key={project._id}
                     asset={project.thumbnail.asset}
                     className=""
                     alt={`Grid image ${project.title}`}
                   />
-                  <h2 className="">{project?.title}</h2>
+                  <h2
+                    className={`${hoveredImageId === project._id ? "opacity-100" : "opacity-0"}`}
+                  >
+                    {project?.title}
+                  </h2>
                 </Link>
               </div>
             ))}
