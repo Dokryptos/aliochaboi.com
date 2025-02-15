@@ -4,6 +4,7 @@ import Grid from "@/components/ui/grid/project";
 import List from "@/components/ui/list/index";
 import { useViewMode } from "@/context/ViewModeContext";
 import ProjectType from "@/types/project";
+import { UIImageSanity } from "../ui/image/sanity";
 
 interface ProjectListProps {
   projectArray: ProjectType[];
@@ -15,11 +16,17 @@ export default function ProjectList({ projectArray }: ProjectListProps) {
     <div className="mt-[84px] pl-5 pr-5 font-ppeiko">
       <div className="">
         {viewMode === "grid" ? (
-          <Grid>
+          <Grid className="gap-5">
             {projectArray.map((project: ProjectType) => (
               <div key={project._id}>
                 <Link className="" href={`/index/${project?.slug?.current}`}>
-                  <h2 className="">{project?.title}/</h2>
+                  <UIImageSanity
+                    key={project._id}
+                    asset={project.thumbnail.asset}
+                    className=""
+                    alt={`Grid image ${project.title}`}
+                  />
+                  <h2 className="">{project?.title}</h2>
                 </Link>
               </div>
             ))}

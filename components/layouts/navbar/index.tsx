@@ -14,7 +14,7 @@ export default function LayoutNavbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-10 font-neueGrotesk text-base/5 laptop:text-xl/[26px]   ${bgColor}`}
+      className={`fixed top-0 left-0 w-full z-20 font-neueGrotesk text-base/5 laptop:text-xl/[26px]   ${bgColor}`}
     >
       <Grid className="gap-5">
         <div className="laptop:col-start-1 laptop:col-span-6 tablet:col-span-4 pl-5 tablet:flex hidden ">
