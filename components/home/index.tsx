@@ -26,9 +26,9 @@ export default function Home({ projectData }: ProjectDataProps) {
 
   return (
     <Grid className="gap-5 tablet:px-0 h-full overflow-hidden">
-      <div className="pr-5 pl-5 tablet:p-0 laptop:col-start-3 laptop:col-span-8 col-start-1 col-span-4 tablet:col-start-2 tablet:col-span-7 flex">
+      <div className="pr-5 pl-5 tablet:p-0 laptop:col-start-3 justify-center laptop:col-span-8 col-start-1 col-span-4 tablet:col-start-2 tablet:col-span-7 flex">
         <motion.div
-          className="inset-0 flex items-center h-screen justify-center"
+          className="inset-0 flex items-center h-screen"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
