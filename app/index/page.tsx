@@ -1,8 +1,8 @@
-import { getProjects } from "@/sanity/queries";
+import { getAllProjects } from "@/sanity/queries";
 import ProjectList from "@/components/index/ProjectList";
 
 export default async function IndexPage() {
-  const projects = await getProjects();
+  const projects = await getAllProjects();
 
   return <ProjectList projectArray={projects} />;
 }

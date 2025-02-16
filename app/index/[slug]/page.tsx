@@ -1,9 +1,11 @@
-import ProjectPage from "@/components/index/ProjectPage";
+// import ProjectPage from "@/components/index/ProjectPage";
 
-export default function ProductPage() {
+export default async function ProductPage() {
+  // const project = await getProject();
+
   return (
-    <div className="mt-[80px]">
-      <ProjectPage />
+    <div className="mt-[84px]">
+      {/* <ProjectPage projectData={} projectArray={} /> */}
     </div>
   );
 }

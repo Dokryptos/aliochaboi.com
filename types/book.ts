@@ -9,7 +9,7 @@ export interface BlockContent {
   children: Array<{ text: string }>;
 }
 
-export interface Book {
+export default interface Book {
   _id: string;
   title: string;
   shortTitle?: string;
