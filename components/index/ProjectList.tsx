@@ -88,7 +88,7 @@ export default function ProjectList({ projectArray }: ProjectListProps) {
                   setHoveredLink(null);
                 }}
               >
-                <Link href={`/index/${project?.slug?.current}`}>
+                <Link href={`/${project?.slug?.current}`}>
                   <h2
                     className={`z-10 relative flex laptop:text-[42px]/[54px] tablet:text-[25px]/[32px] text-[18px]/[23px]  ${hoveredImageId === project._id ? "text-black" : "text-[#818181]"}`}
                   >
@@ -99,7 +99,7 @@ export default function ProjectList({ projectArray }: ProjectListProps) {
               </motion.div>
             ))}
             {hoveredImage && (
-              <Link href={`/index/${hoveredLink}`}>
+              <Link href={`/${hoveredLink}`}>
                 <UIImageSanity
                   key={hoveredImageId}
                   asset={hoveredImage}

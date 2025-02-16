@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function LayoutNavbar() {
-  const pathname = usePathname(); // Récupère la route actuelle
+  const pathname = usePathname();
   const { viewMode, setViewMode } = useViewMode();
 
   const bgColor =
@@ -24,11 +24,11 @@ export default function LayoutNavbar() {
         </div>
 
         <div className="laptop:col-start-7 tablet:col-start-5 flex col-start-1 col-span-2 pl-5 tablet:pl-0">
-          <Link className="pt-5 pb-10" href="/index">
+          <Link className="pt-5 pb-10" href="/project">
             Index
           </Link>
           {/* Affichage du Toggle List/Grid uniquement sur la page Project */}
-          {pathname.includes("/index") && (
+          {pathname.includes("/project") && (
             <div className="pt-5 pl-3 pb-10 font-ppeiko text-[10px] laptop:text-[12px] flex items-center">
               <button
                 className={` pr-1 ${
