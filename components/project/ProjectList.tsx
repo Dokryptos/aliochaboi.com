@@ -37,12 +37,13 @@ export default function ProjectList({ projectArray }: ProjectListProps) {
     <div className="mt-[84px] ml-5 mr-5 font-ppeiko font-thin">
       <div>
         {viewMode === "grid" ? (
-          <Grid className="gap-5 gap-y-10">
+          <Grid className="gap-x-5">
             {projectArray.map((project: ProjectType, i: number) => (
               <motion.div
                 custom={i}
                 initial="hidden"
                 animate="visible"
+                className="mb-10"
                 variants={gridAnimationVariant}
                 key={project._id}
               >
@@ -104,7 +105,7 @@ export default function ProjectList({ projectArray }: ProjectListProps) {
                   key={hoveredImageId}
                   asset={hoveredImage}
                   alt={`Thumbnail hovered ${hoveredImageId}`}
-                  className="object-contain bottom-5 fixed right-5 z-0 max-h-[450px] max-w-[350px]"
+                  className="bottom-5 fixed right-5 z-0 max-h-[450px] max-w-[350px]"
                 />
               </Link>
             )}
