@@ -2,10 +2,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import ProjectType from "@/types/project";
-import { urlForImage } from "@/sanity/lib/image";
-import Image from "next/image";
 import Grid from "../ui/grid";
 import CarouselNavigation from "@/components/carousel/navigation";
+import { UIImageSanity } from "../ui/image/sanity";
 
 type ProjectDataProps = {
   projectData: ProjectType[]; // Liste de tous les projets
@@ -35,26 +34,15 @@ export default function Home({ projectData }: ProjectDataProps) {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Image
-            src={urlForImage(projectData[index].thumbnail)
-              .fit("max")
-              .maxWidth(1440)
-              .maxHeight(1440)
-              .quality(80)
-              .url()}
+          <UIImageSanity
+            asset={projectData[index].thumbnail}
             alt="Carrousel Project Home"
-            width={1440}
-            height={960}
             className="object-contain h-auto max-w-full laptop:max-h-[608px] tablet:max-h-[752px] max-h-[80vh]"
-            priority={index === 0} // Charge la première image immédiatement
           />
         </motion.div>
       </div>
 
-      <CarouselNavigation
-        onPrev={prevProject} // Passer la fonction prevProject en prop
-        onNext={nextProject} // Passer la fonction nextProject en prop
-      />
+      <CarouselNavigation onPrev={prevProject} onNext={nextProject} />
       <div className="absolute w-full pb-5 pt-5 bottom-0">
         <Grid className="gap-5">
           <div className="laptop:col-start-1 laptop:col-span-6 tablet:block hidden">
