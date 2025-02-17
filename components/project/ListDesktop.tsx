@@ -44,9 +44,9 @@ export default function ListDesktop({ projectArray }: ListDesktopProps) {
         >
           <Link href={`/${project?.slug?.current}`}>
             <h2
-              className={`z-10 relative flex laptop:text-[42px]/[54px] tablet:text-[25px]/[32px] text-[18px]/[23px]  ${hoveredImageId === project._id ? "text-black" : "text-[#818181]"}`}
+              className={`z-10  mix-blend-difference relative flex laptop:text-[42px]/[54px] tablet:text-[25px]/[32px] text-[18px]/[23px]  ${hoveredImageId === project._id ? "text-white" : "text-[#818181]"}`}
             >
-              {project?.title}
+              {project?.title}ffffffffffffffffffffffffffffffffffff
               <p className="pl-1 pr-1 text-[#818181]">/</p>
             </h2>
           </Link>

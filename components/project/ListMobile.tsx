@@ -53,10 +53,10 @@ export default function ListMobile({ projectArray }: ListMobileProps) {
 
   return (
     <div
-      className="laptop:hidden relative font-ppeiko overflow-y-auto mt-[84px]"
+      className="laptop:hidden flex font-ppeiko overflow-y-auto mt-[84px] "
       style={{ height: totalHeight }}
     >
-      <List className="fixed">
+      <List className="fixed mr-5">
         {projectArray.map((project: ProjectType, i: number) => (
           <motion.div
             key={project._id}
@@ -67,25 +67,24 @@ export default function ListMobile({ projectArray }: ListMobileProps) {
           >
             <Link href={`/${project?.slug?.current}`}>
               <h2
-                className={`z-10  relative flex laptop:text-[42px]/[54px] tablet:text-[25px]/[32px] text-[18px]/[23px]  ${projectArray[selectedIndex]?._id === project._id ? "text-black" : "text-[#818181]"}`}
+                className={`z-20 mix-blend-difference relative flex laptop:text-[42px]/[54px] tablet:text-[25px]/[32px] text-[18px]/[23px]  ${projectArray[selectedIndex]?._id === project._id ? "text-black" : "text-[#818181]"}`}
               >
                 {project?.title}
                 <p className="pl-1 pr-1 text-[#818181]">/</p>
               </h2>
             </Link>
           </motion.div>
-        ))}
+        ))}{" "}
+        <Link href={`/${projectArray[selectedIndex]?.slug.current}`}>
+          <UIImageSanity
+            key={projectArray[selectedIndex]._id}
+            asset={projectArray[selectedIndex].thumbnail.asset}
+            alt={`Thumbnail hovered ${projectArray[selectedIndex]._id}`}
+            className="bottom-5 fixed right-5 z-10 max-h-[215px] max-w-[250px] tablet:max-w-[575px] tablet:max-h-[530px] w-auto"
+          />
+        </Link>
       </List>
       {/* <MobileArrowDown /> */}
-
-      <Link href={`/${projectArray[selectedIndex]?.slug.current}`}>
-        <UIImageSanity
-          key={projectArray[selectedIndex]._id}
-          asset={projectArray[selectedIndex].thumbnail.asset}
-          alt={`Thumbnail hovered ${projectArray[selectedIndex]._id}`}
-          className="bottom-5 fixed right-5 z-0 max-h-[215px] max-w-[250px] tablet:max-w-[575px] tablet:max-h-[530px] w-auto"
-        />
-      </Link>
     </div>
   );
 }
