@@ -34,5 +34,9 @@ html,
 body {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
+  touch-action: manipulation;
   user-select: none;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
 }

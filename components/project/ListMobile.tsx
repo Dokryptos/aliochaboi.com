@@ -53,7 +53,7 @@ export default function ListMobile({ projectArray }: ListMobileProps) {
 
   return (
     <div
-      className="laptop:hidden relative overflow-y-auto mt-[84px]"
+      className="laptop:hidden relative font-ppeiko overflow-y-auto mt-[84px]"
       style={{ height: totalHeight }}
     >
       <List className="fixed">
@@ -67,7 +67,7 @@ export default function ListMobile({ projectArray }: ListMobileProps) {
           >
             <Link href={`/${project?.slug?.current}`}>
               <h2
-                className={`z-10 font-ppeiko relative flex laptop:text-[42px]/[54px] tablet:text-[25px]/[32px] text-[18px]/[23px]  ${projectArray[selectedIndex]?._id === project._id ? "text-black" : "text-[#818181]"}`}
+                className={`z-10  relative flex laptop:text-[42px]/[54px] tablet:text-[25px]/[32px] text-[18px]/[23px]  ${projectArray[selectedIndex]?._id === project._id ? "text-black" : "text-[#818181]"}`}
               >
                 {project?.title}
                 <p className="pl-1 pr-1 text-[#818181]">/</p>
