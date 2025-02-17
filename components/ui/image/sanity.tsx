@@ -28,7 +28,6 @@ export const UIImageSanity = ({
     .maxHeight(1440)
     .quality(75)
     .url();
-  console.log("Generated Image URL:", imageUrl);
   return (
     <Image
       src={imageUrl}
@@ -36,7 +35,6 @@ export const UIImageSanity = ({
       alt={alt}
       width={width}
       height={height}
-      layout="intrinsic"
       sizes="(max-width: 1024px) 100vw, 1024px"
     />
   );
