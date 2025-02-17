@@ -41,6 +41,7 @@ export default function ListMobile({ projectArray }: ListMobileProps) {
     return () => {
       window.removeEventListener("scroll", updateSelectedIndex);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedIndex]);
 
   const listAnimationVariant = {

@@ -1,17 +1,16 @@
 // import ProjectPage from "@/components/slug/ProjectPage";
 // import { getProject } from "@/sanity/queries";
 
-// export default async function ProductPage() {
-//   const project = await getProject();
-//   console.log(project);
-//   if (!project) {
-//     throw new Error("Aucun projet récupéré");
-//   }
+export default async function ProductPage() {
+  // const project = await getProject();
+  // console.log(project);
+  // if (!project) {
+  //   throw new Error("Aucun projet récupéré");
+  // }
 
-//   return (
-//     <ProjectPage
-//       projectData={project.project}
-//       projectArray={project.projectArray}
-//     />
-//   );
-// }
+  return <>hello</>;
+  // <ProjectPage
+  //   projectData={project.project}
+  //   projectArray={project.projectArray}
+  // />
+}
