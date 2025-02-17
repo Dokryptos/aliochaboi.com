@@ -15,7 +15,7 @@ export default {
       },
       colors: {
         themeColor: {
-          DEFAULT: "#92AE87",
+          DEFAULT: "#B26455",
         },
         background: "var(--background)",
         foreground: "var(--foreground)",

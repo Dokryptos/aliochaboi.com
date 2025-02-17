@@ -9,8 +9,7 @@ export default function LayoutNavbar() {
   const pathname = usePathname();
   const { viewMode, setViewMode } = useViewMode();
 
-  const bgColor =
-    pathname === "/info" ? "bg-themeColor" : "bg-white transition-colors";
+  const bgColor = pathname === "/info" ? "bg-themeColor" : "bg-white";
 
   return (
     <nav

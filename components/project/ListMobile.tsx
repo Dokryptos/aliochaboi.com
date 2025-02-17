@@ -18,10 +18,8 @@ export default function ListMobile({ projectArray }: ListMobileProps) {
     const scrollTop = window.scrollY;
     const totalScrollHeight =
       document.documentElement.scrollHeight - window.innerHeight;
-    console.log("scrollPosition:", scrollTop);
 
     let newIndex = Math.floor(scrollTop / projectHeight);
-    console.log(newIndex);
 
     if (scrollTop >= totalScrollHeight) {
       newIndex = projectArray.length - 1;
