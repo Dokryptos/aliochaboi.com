@@ -4,6 +4,7 @@ import { UIImageSanity } from "../ui/image/sanity";
 import ProjectType from "@/types/project";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+// import MobileArrowDown from "@/icons/mobile-arrowDown.png";
 
 interface ListMobileProps {
   projectArray: ProjectType[];
@@ -75,6 +76,7 @@ export default function ListMobile({ projectArray }: ListMobileProps) {
           </motion.div>
         ))}
       </List>
+      {/* <MobileArrowDown /> */}
 
       <Link href={`/${projectArray[selectedIndex]?.slug.current}`}>
         <UIImageSanity

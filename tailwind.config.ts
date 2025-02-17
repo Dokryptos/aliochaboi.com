@@ -15,10 +15,11 @@ export default {
       },
       colors: {
         themeColor: {
-          DEFAULT: "#B26455",
+          DEFAULT: "#FFFFFF",
         },
         background: "var(--background)",
         foreground: "var(--foreground)",
+        principal: "#B26455",
       },
       width: {
         tablet: "640px",

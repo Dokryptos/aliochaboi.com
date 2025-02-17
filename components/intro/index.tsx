@@ -24,7 +24,7 @@ export default function Intro() {
   return (
     <div>
       <motion.div
-        className={`fixed inset-0 z-30 bg-themeColor ${isVisibleBg ? "block" : "hidden"}`}
+        className={`fixed inset-0 z-30 bg-principal ${isVisibleBg ? "block" : "hidden"}`}
         initial={{ y: 0 }}
         animate={{ y: "-100%" }}
         transition={{ duration: 0.5, delay: 1, ease: "easeOut" }}
