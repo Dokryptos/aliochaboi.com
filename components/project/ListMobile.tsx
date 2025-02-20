@@ -4,7 +4,8 @@ import { UIImageSanity } from "../ui/image/sanity";
 import ProjectType from "@/types/project";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-// import MobileArrowDown from "@/icons/mobile-arrowDown.png";
+import MobileArrowDown from "@/public/icons/mobile-arrowDown.svg";
+import Image from "next/image";
 
 interface ListMobileProps {
   projectArray: ProjectType[];
@@ -56,35 +57,48 @@ export default function ListMobile({ projectArray }: ListMobileProps) {
       className="laptop:hidden flex font-ppeiko overflow-y-auto mt-[84px] "
       style={{ height: totalHeight }}
     >
-      <List className="fixed mr-5">
-        {projectArray.map((project: ProjectType, i: number) => (
-          <motion.div
-            key={project._id}
-            custom={i}
-            initial="hidden"
-            animate="visible"
-            variants={listAnimationVariant}
-          >
-            <Link href={`/${project?.slug?.current}`}>
-              <h2
-                className={`z-20 mix-blend-difference relative flex laptop:text-[42px]/[54px] tablet:text-[25px]/[32px] text-[18px]/[23px]  ${projectArray[selectedIndex]?._id === project._id ? "text-black" : "text-[#818181]"}`}
-              >
-                {project?.title}
-                <p className="pl-1 pr-1 text-[#818181]">/</p>
-              </h2>
-            </Link>
-          </motion.div>
-        ))}{" "}
-        <Link href={`/${projectArray[selectedIndex]?.slug.current}`}>
-          <UIImageSanity
-            key={projectArray[selectedIndex]._id}
-            asset={projectArray[selectedIndex].thumbnail.asset}
-            alt={`Thumbnail hovered ${projectArray[selectedIndex]._id}`}
-            className="bottom-5 fixed right-5 z-10 max-h-[215px] max-w-[250px] tablet:max-w-[575px] tablet:max-h-[530px] w-auto"
-          />
-        </Link>
+      <List className="fixed mr-5 ">
+        <div className="flex-col">
+          {projectArray.map((project: ProjectType, i: number) => (
+            <motion.div
+              key={project._id}
+              custom={i}
+              initial="hidden"
+              animate="visible"
+              variants={listAnimationVariant}
+            >
+              <Link href={`/${project?.slug?.current}`}>
+                <h2
+                  className={`z-20 mix-blend-difference relative flex laptop:text-[42px]/[54px] tablet:text-[25px]/[32px] text-[18px]/[23px]  ${projectArray[selectedIndex]?._id === project._id ? "text-black" : "text-[#818181]"}`}
+                >
+                  {project?.title}
+                  <p className="pl-1 pr-1 text-[#818181]">/</p>
+                </h2>
+              </Link>
+            </motion.div>
+          ))}
+          <Link href={`/${projectArray[selectedIndex]?.slug.current}`}>
+            <UIImageSanity
+              key={projectArray[selectedIndex]._id}
+              asset={projectArray[selectedIndex].thumbnail.asset}
+              alt={`Thumbnail hovered ${projectArray[selectedIndex]._id}`}
+              className="bottom-5 fixed right-5 z-10 max-h-[215px] max-w-[250px] tablet:max-w-[575px] tablet:max-h-[530px] w-auto"
+            />
+          </Link>
+          <div className="flex mt-[24px]">
+            <Image
+              src={MobileArrowDown}
+              alt="Mobile/Pads arrow"
+              className="w-[7px] h-[15px] mr-[8px]"
+            />
+            <Image
+              src={MobileArrowDown}
+              alt="Mobile/Pads arrow"
+              className="w-[7px] h-[15px]"
+            />
+          </div>
+        </div>
       </List>
-      {/* <MobileArrowDown /> */}
     </div>
   );
 }
