@@ -20,8 +20,8 @@ export default function BookComponent({ bookArray }: BookDataProps) {
             <Link href={book.link}>
               <UIImageSanity
                 asset={book.thumbnail.asset}
+                className="pb-3"
                 alt={`${book.title}`}
-                className=""
               />
               <div>
                 <p>
