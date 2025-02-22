@@ -12,9 +12,7 @@ export interface BlockContent {
 export default interface Book {
   _id: string;
   title: string;
-  shortTitle?: string;
-  description: BlockContent[];
   thumbnail?: SanityImage;
-  tags?: string[];
-  details?: BlockContent[];
+  productBy: string;
+  details?: string;
 }

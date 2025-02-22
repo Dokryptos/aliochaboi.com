@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Grid from "@/components/ui/grid/project";
 import { useViewMode } from "@/context/ViewModeContext";
-import ProjectType from "@/types/project";
+import type ProjectType from "@/types/project";
 import { UIImageSanity } from "../ui/image/sanity";
 import { useState } from "react";
 import { motion } from "framer-motion";

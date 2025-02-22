@@ -16,16 +16,8 @@ export const bookType = defineType({
       description: "The title of the project",
     }),
     defineField({
-      name: "shortTitle",
-      title: "Short Title",
-      type: "string",
-      description: "Short title of the project",
-    }),
-    defineField({
       name: "details",
       title: "Details",
-      validation: (rule) =>
-        rule.required().error(`Required to generate a page on the website`),
       type: "string",
       description:
         "Write the desDetails of your project (Pages, Number of books)",
