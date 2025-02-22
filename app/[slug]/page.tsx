@@ -1,16 +1,38 @@
-// import ProjectPage from "@/components/slug/ProjectPage";
-// import { getProject } from "@/sanity/queries";
+import ProjectPage from "@/components/slug/ProjectPage";
+import { defineQuery } from "next-sanity";
+import { notFound } from "next/navigation";
+import { sanityFetch } from "@/sanity/lib/live";
+import type projectType from "@/types/project";
 
-export default async function ProductPage() {
-  // const project = await getProject();
-  // console.log(project);
-  // if (!project) {
-  //   throw new Error("Aucun projet récupéré");
-  // }
+const PROJECT_QUERY = defineQuery(`
+  {
+  "project": *[
+    _type == "project" &&
+    slug.current == $slug
+  ][0]{
+  ...,
+},
+"projectArray": *[
+  _type == "project"
+  && defined(slug.current)
+]{_id, title, slug, description, thumbnail, gallery, tags, details, shortTitle }
+}
+`);
 
-  return <>hello</>;
-  // <ProjectPage
-  //   projectData={project.project}
-  //   projectArray={project.projectArray}
-  // />
+export default async function SlugPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { data } = await sanityFetch({
+    query: PROJECT_QUERY,
+    params: { slug: (await params).slug },
+  });
+  if (!data) {
+    notFound();
+  }
+  console.log(data);
+  const projectData: projectType = data.project;
+  const projectArray: projectType[] = data.projectArray;
+  return <ProjectPage projectData={projectData} projectArray={projectArray} />;
 }

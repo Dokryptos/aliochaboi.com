@@ -1,6 +1,6 @@
 import { defineQuery } from "next-sanity";
 import { sanityFetch } from "@/sanity/lib/live";
-import Home from "@/components/home";
+import HomeComponent from "@/components/home";
 
 const EVENTS_QUERY = defineQuery(`*[
   _type == "project"
@@ -11,7 +11,7 @@ export default async function HomePage() {
   const { data } = await sanityFetch({ query: EVENTS_QUERY });
   return (
     <main className="font-neueGrotesk">
-      <Home projectData={data} />
+      <HomeComponent projectData={data} />
     </main>
   );
 }

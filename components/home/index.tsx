@@ -11,7 +11,7 @@ type ProjectDataProps = {
   projectData: ProjectType[]; // Liste de tous les projets
 };
 
-export default function Home({ projectData }: ProjectDataProps) {
+export default function HomeComponent({ projectData }: ProjectDataProps) {
   const [index, setIndex] = useState(0);
 
   if (!projectData.length || !projectData[index]) return null;

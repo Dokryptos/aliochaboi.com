@@ -13,7 +13,9 @@ interface ProjectListProps {
   projectArray: ProjectType[];
 }
 
-export default function ProjectList({ projectArray }: ProjectListProps) {
+export default function ProjectListComponent({
+  projectArray,
+}: ProjectListProps) {
   const { viewMode } = useViewMode();
   const [hoveredImageId, setHoveredImageId] = useState<string | null>(null);
 

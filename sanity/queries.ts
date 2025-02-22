@@ -58,14 +58,10 @@ export const INDEX_PROJECT_QUERY = defineQuery(`
 }
 `);
 
-export async function getProject({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export async function getProject({ params }: { params: { slug: string } }) {
   const { data } = await sanityFetch({
     query: INDEX_PROJECT_QUERY,
-    params: { slug: (await params).slug },
+    params: { slug: params.slug },
   });
   if (!data) {
     notFound();

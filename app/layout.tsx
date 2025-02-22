@@ -38,7 +38,7 @@ const ppeikoThin = localFont({
 
 export default function RootLayout({ children }: Props) {
   return (
-    <html>
+    <html lang="en">
       <head>
         <meta
           name="viewport"

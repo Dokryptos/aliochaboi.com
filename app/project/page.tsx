@@ -1,5 +1,5 @@
 import { getAllProjects } from "@/sanity/queries";
-import ProjectList from "@/components/project/ProjectList";
+import ProjectListComponent from "@/components/project/ProjectList";
 
 export default async function IndexPage() {
   const projects = await getAllProjects();
@@ -7,5 +7,5 @@ export default async function IndexPage() {
   if (!projects) {
     throw new Error("Aucun projet récupéré");
   }
-  return <ProjectList projectArray={projects} />;
+  return <ProjectListComponent projectArray={projects} />;
 }
