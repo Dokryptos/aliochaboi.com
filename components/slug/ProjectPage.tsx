@@ -32,7 +32,7 @@ export default function ProjectPage({
       // Si c'est la dernière image, passer au projet suivant
       const nextProject =
         projectArray[(currentProjectIndex + 1) % projectsArray.length]; // Boucle sur le premier projet
-      router.push(`/${nextProject.slug.current}`);
+      router.push(`/project/${nextProject.slug.current}`);
     } else {
       setCurrentImageIndex(
         (currentImageIndex + 1) % currentProject.gallery.length
@@ -47,7 +47,7 @@ export default function ProjectPage({
         projectArray[
           (currentProjectIndex - 1 + projectArray.length) % projectsArray.length
         ];
-      router.push(`/${prevProject.slug.current}`);
+      router.push(`/project/${prevProject.slug.current}`);
     } else {
       setCurrentImageIndex(currentImageIndex - 1);
     }

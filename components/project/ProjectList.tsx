@@ -42,7 +42,7 @@ export default function ProjectListComponent({
               >
                 <Link
                   className=""
-                  href={`/index/${project?.slug?.current}`}
+                  href={`/project/${project?.slug?.current}`}
                   onMouseEnter={() => {
                     setHoveredImageId(project._id);
                   }}

@@ -1,6 +1,6 @@
 import Grid from "@/components/ui/grid/index";
 
-export default async function Info() {
+export default async function InfoPage() {
   return (
     <div className="h-auto tablet:h-screen w-screen font-neueGrotesk bg-principal pt-[86px] font-normal text-[16px]/[21px] tablet:text-[20px]/[26px]">
       <Grid className="gap-0 tablet:gap-5 ">
