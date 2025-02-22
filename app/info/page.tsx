@@ -21,17 +21,21 @@ export default async function Info() {
           <div>
             <p className="pb-3">Contact</p>
             <p>Personal/editorial</p>
-            <p>aliocha.boi@gmail.com</p>
+            <a className="underline" href="mailto:aliocha.boi@gmail.com">
+              aliocha.boi@gmail.com
+            </a>
           </div>
           <br />
           <div>
-            <p>Commercialsonia</p>
-            <p>@sorepresent.com</p>
+            <p>Commercial</p>
+            <a className="underline" href="mailto:sonia@sorepresent.com">
+              sonia@sorepresent.com
+            </a>
           </div>
         </div>
         <div className="tablet:col-span-3 tablet:col-start-7 laptop:grid laptop:grid-cols-6 laptop:w-full tablet:gap-5 laptop:col-span-6 laptop:col-start-7">
           <div className="col-span-4 pl-5 pr-5 tablet:pl-0 laptop:col-span-2 laptop:col-start-1">
-            <p className="pb-3">Clients (selection)</p>
+            <p className="pb-3 laptop:pb-6">Clients (selection)</p>
             <ul className="pb-10">
               <li className="pb-1">Agnès B</li>
               <li className="pb-1">L’Oréal Paris</li>
@@ -48,7 +52,7 @@ export default async function Info() {
             </ul>
           </div>
           <div className="col-span-4 pl-5 pr-5 tablet:pl-0 laptop:col-span-3 laptop:col-start-3">
-            <p className="pb-3">Publications (selection)</p>
+            <p className="pb-3 laptop:pb-6">Publications (selection)</p>
             <ul className="pb-5">
               <li className="pb-1">M Le Monde</li>
               <li className="pb-1">FT Weekend</li>
