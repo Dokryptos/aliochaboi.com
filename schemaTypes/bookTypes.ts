@@ -49,5 +49,13 @@ export const bookType = defineType({
       type: "string",
       description: "The Name of the Producter",
     }),
+    defineField({
+      name: "link",
+      title: "Link",
+      validation: (rule) =>
+        rule.required().error(`Required to generate a page on the website`),
+      type: "string",
+      description: "The link to the shop, can't be published without him",
+    }),
   ],
 });

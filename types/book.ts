@@ -1,18 +1,18 @@
+import type { Slug } from "@sanity/types";
+
 export interface SanityImage {
   asset: {
     _ref: string;
     _type: "reference";
   };
 }
-export interface BlockContent {
-  _type: "block";
-  children: Array<{ text: string }>;
-}
 
 export default interface Book {
   _id: string;
+  slug: Slug;
   title: string;
-  thumbnail?: SanityImage;
+  thumbnail: SanityImage;
   productBy: string;
   details?: string;
+  link: string;
 }

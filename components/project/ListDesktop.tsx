@@ -42,7 +42,7 @@ export default function ListDesktop({ projectArray }: ListDesktopProps) {
             setHoveredLink(null);
           }}
         >
-          <Link href={`/project/${project?.slug?.current}`}>
+          <Link href={`/${project?.slug?.current}`}>
             <h2
               className={`z-10  mix-blend-difference relative flex laptop:text-[42px]/[54px] tablet:text-[25px]/[32px] text-[18px]/[23px]  ${hoveredImageId === project._id ? "text-white" : "text-[#818181]"}`}
             >
@@ -53,7 +53,7 @@ export default function ListDesktop({ projectArray }: ListDesktopProps) {
         </motion.div>
       ))}
       {hoveredImage && (
-        <Link href={`/project/${hoveredLink}`}>
+        <Link href={`/${hoveredLink}`}>
           <UIImageSanity
             key={hoveredImageId}
             asset={hoveredImage}

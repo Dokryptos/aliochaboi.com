@@ -34,9 +34,8 @@ export async function getAllProjects(): Promise<ProjectType[]> {
 }
 
 export const BOOK_QUERY = defineQuery(`*[
-  _type == "book"
-  && defined(slug.current)
-]{_id, title, slug, thumbnail, productBy, details }`);
+  _type == "book"]
+  {_id, title, slug, thumbnail, productBy, details, link }`);
 
 export async function getBook(): Promise<BookType[]> {
   const { data } = await sanityFetch({ query: BOOK_QUERY });
