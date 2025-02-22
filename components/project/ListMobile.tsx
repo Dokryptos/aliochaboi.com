@@ -57,7 +57,7 @@ export default function ListMobile({ projectArray }: ListMobileProps) {
       className="laptop:hidden flex font-ppeiko overflow-y-auto mt-[84px] "
       style={{ height: totalHeight }}
     >
-      <List className="fixed mr-5 ">
+      <List className="fixed mr-5">
         {projectArray.map((project: ProjectType, i: number) => (
           <motion.div
             key={project._id}
@@ -84,7 +84,7 @@ export default function ListMobile({ projectArray }: ListMobileProps) {
             className="bottom-5 fixed right-5 z-10 max-h-[215px] max-w-[250px] tablet:max-w-[575px] tablet:max-h-[530px] w-auto"
           />
         </Link>
-        <div className="absolute bottom-0 left-0 w-full flex mt-[150px]">
+        <div className="absolute bottom-[-25px] left-0 flex">
           <Image
             src={MobileArrowDown}
             alt="Mobile/Pads arrow"
