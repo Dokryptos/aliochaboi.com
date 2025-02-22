@@ -1,4 +1,4 @@
-import { defineField, defineType, defineArrayMember } from "sanity";
+import { defineField, defineType } from "sanity";
 import { BookIcon } from "@sanity/icons";
 
 export const bookType = defineType({
@@ -22,22 +22,22 @@ export const bookType = defineType({
       description: "Short title of the project",
     }),
     defineField({
-      name: "description",
-      title: "Description",
+      name: "details",
+      title: "Details",
       validation: (rule) =>
         rule.required().error(`Required to generate a page on the website`),
-      type: "array",
-      of: [defineArrayMember({ type: "block", name: "block" })],
-      description: "Write the description of your project",
+      type: "string",
+      description:
+        "Write the desDetails of your project (Pages, Number of books)",
     }),
-    defineField({
-      name: "price",
-      title: "Price",
-      validation: (rule) =>
-        rule.required().error(`Required to generate a page on the website`),
-      type: "number",
-      description: "Write the price in number",
-    }),
+    // defineField({
+    //   name: "price",
+    //   title: "Price",
+    //   validation: (rule) =>
+    //     rule.required().error(`Required to generate a page on the website`),
+    //   type: "number",
+    //   description: "Write the price in number",
+    // }),
     defineField({
       name: "thumbnail",
       title: "Thumbnail",
@@ -50,29 +50,12 @@ export const bookType = defineType({
       description: "The first img use for the présentation project",
     }),
     defineField({
-      name: "tags",
-      title: "Tags",
-      type: "array",
-      of: [defineArrayMember({ type: "string", name: "tag" })],
-      description: "Tags for the project",
-    }),
-    defineField({
-      name: "gallery",
-      title: "Gallery",
-      type: "array",
-      of: [
-        defineArrayMember({
-          type: "image",
-          name: "image",
-          options: {
-            hotspot: true,
-          },
-        }),
-        // defineArrayMember({
-        //   type: "mux.video",
-        //   name: "video",
-        // }),
-      ],
+      name: "productBy",
+      title: "ProductBy",
+      validation: (rule) =>
+        rule.required().error(`Required to generate a page on the website`),
+      type: "string",
+      description: "The Name of the Producter",
     }),
   ],
 });

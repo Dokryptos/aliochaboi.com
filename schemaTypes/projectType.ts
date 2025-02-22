@@ -17,12 +17,6 @@ export const projectType = defineType({
       description: "The title of the project",
     }),
     defineField({
-      name: "shortTitle",
-      title: "Short Title",
-      type: "string",
-      description: "Short title of the project",
-    }),
-    defineField({
       name: "slug",
       title: "Slug",
       type: "slug",
@@ -62,10 +56,6 @@ export const projectType = defineType({
             hotspot: true,
           },
         }),
-        // defineArrayMember({
-        //   type: "mux.video",
-        //   name: "video",
-        // }),
       ],
     }),
   ],
