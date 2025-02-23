@@ -87,7 +87,7 @@ export default function ProjectPage({
               transition={{ duration: 0.5 }}
               className="text-black flex items-center pl-5 tablet:pl-0"
             >
-              <p className="mr-1 laptop:mr-3 text-[16px]/[21px] laptop:text-[20px]/[26px]">
+              <p className="mr-3 text-[16px]/[21px] laptop:text-[20px]/[26px]">
                 {currentProject.title}
               </p>
               <p className="text-[10px]/[13px] laptop:text-[12px]/[15px] font-ppeiko">

@@ -6,8 +6,9 @@ export default async function InfoPage() {
       <Grid className="gap-0 tablet:gap-5 ">
         <div className="pb-10 col-span-4 pl-5 pr-5 tablet:col-start-1 tablet:col-span-6 laptop:col-span-5">
           <p className="pb-3">
-            Aliocha is a Franco-Canadian-Italian photographer based in Paris. He
-            is driven by color, intricate details (textures, materials, and
+            Aliocha is a Franco-Canadian-Italian photographer based in Paris.
+            <br />
+            He is driven by color, intricate details (textures, materials, and
             gestures), and the interaction between humans and their environment.
             <br />
             He collaborates with various brands and has been published both in
@@ -33,7 +34,7 @@ export default async function InfoPage() {
             </a>
           </div>
         </div>
-        <div className="tablet:col-span-3 tablet:col-start-7 laptop:grid laptop:grid-cols-6 laptop:w-full tablet:gap-5 laptop:col-span-6 laptop:col-start-7">
+        <div className="col-span-4 tablet:col-span-3 tablet:col-start-7 laptop:grid laptop:grid-cols-6 laptop:w-full tablet:gap-5 laptop:col-span-6 laptop:col-start-7">
           <div className="col-span-4 pl-5 pr-5 tablet:pl-0 laptop:col-span-2 laptop:col-start-1">
             <p className="pb-3 laptop:pb-6">Clients (selection)</p>
             <ul className="pb-10">

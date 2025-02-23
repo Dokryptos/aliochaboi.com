@@ -33,7 +33,7 @@ export default function Intro() {
       const timerH1 = setTimeout(() => {
         setIsVisibleH1(false);
         sessionStorage.setItem("animationSeen", "true");
-      }, 4000);
+      }, 2500);
 
       return () => {
         clearTimeout(timerBg);
@@ -58,7 +58,7 @@ export default function Intro() {
               className="font-neueGrotesk mix-blend-difference text-black dekstop:text-[70px] tablet:text-[45px] text-[35px]"
               initial={{ opacity: 1 }}
               animate={{ opacity: 0 }}
-              transition={{ duration: 1.5, delay: 3, ease: "easeOut" }}
+              transition={{ duration: 0.5, delay: 2, ease: "easeOut" }}
             >
               Aliocha Boi
             </motion.h1>
