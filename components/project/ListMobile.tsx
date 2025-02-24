@@ -52,6 +52,8 @@ export default function ListMobile({ projectArray }: ListMobileProps) {
     }),
   };
 
+  const delayArrowAnimation = (projectArray.length + 2) * 0.2;
+
   return (
     <div
       className="laptop:hidden flex font-ppeiko overflow-y-auto mt-[84px] "
@@ -84,7 +86,12 @@ export default function ListMobile({ projectArray }: ListMobileProps) {
             className="bottom-5 fixed right-5 z-10 max-h-[215px] max-w-[250px] tablet:max-w-[575px] tablet:max-h-[530px] w-auto"
           />
         </Link>
-        <div className="absolute bottom-[-25px] left-0 flex">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: delayArrowAnimation }}
+          className="absolute bottom-[-51px] left-0 flex"
+        >
           <Image
             src={MobileArrowDown}
             alt="Mobile/Pads arrow"
@@ -95,7 +102,7 @@ export default function ListMobile({ projectArray }: ListMobileProps) {
             alt="Mobile/Pads arrow"
             className="w-[7px] h-[15px]"
           />
-        </div>
+        </motion.div>
       </List>
     </div>
   );
