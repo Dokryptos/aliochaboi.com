@@ -31,7 +31,6 @@ export default async function SlugPage({
   if (!data) {
     notFound();
   }
-  console.log(data);
   const projectData: projectType = data.project;
   const projectArray: projectType[] = data.projectArray;
   return <ProjectPage projectData={projectData} projectArray={projectArray} />;

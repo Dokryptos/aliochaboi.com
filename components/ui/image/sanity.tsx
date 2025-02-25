@@ -9,6 +9,8 @@ export type UIImageSanityProps = {
   alt: string;
   // optional className
   className?: string;
+  quality?: number;
+  blur?: number;
   width?: number;
   height?: number;
 };
@@ -28,12 +30,22 @@ export const UIImageSanity = ({
     .maxHeight(1440)
     .quality(75)
     .url();
+
+  const blurUrl = urlForImage(asset)
+    .maxWidth(1040)
+    .maxHeight(1040)
+    .quality(10)
+    .blur(100)
+    .url();
+
   return (
     <Image
       src={imageUrl}
       className={className}
       alt={alt}
       width={width}
+      placeholder="blur"
+      blurDataURL={blurUrl}
       height={height}
       sizes="(max-width: 1024px) 100vw, 1024px"
     />

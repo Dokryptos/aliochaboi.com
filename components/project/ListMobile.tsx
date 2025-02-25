@@ -77,7 +77,7 @@ export default function ListMobile({
             animate="visible"
             variants={listAnimationVariant}
           >
-            <Link href={`/project/${project?.slug?.current}`}>
+            <Link href={`/${project?.slug?.current}`}>
               <h2
                 className={`z-20 mix-blend-difference relative flex tablet:text-[25px]/[32px] text-[18px]/[23px] ${projectArray[selectedIndex]?._id === project._id ? "text-white z-20" : "text-[#818181]"}`}
               >
@@ -110,7 +110,7 @@ export default function ListMobile({
         >
           Back
         </Link>
-        <Link href={`/project/${projectArray[selectedIndex]?.slug.current}`}>
+        <Link href={`/${projectArray[selectedIndex]?.slug.current}`}>
           <UIImageSanity
             key={projectArray[selectedIndex]._id}
             asset={projectArray[selectedIndex].thumbnail.asset}

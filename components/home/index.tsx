@@ -39,7 +39,7 @@ export default function HomeComponent({ projectData }: ProjectDataProps) {
             transition={{ duration: 0.5 }}
           >
             <Link
-              href={`/project/${projectData[index].slug.current}`}
+              href={`/${projectData[index].slug.current}`}
               className="z-20 h-auto w-auto laptop:flex hidden"
             >
               <UIImageSanity
@@ -66,7 +66,7 @@ export default function HomeComponent({ projectData }: ProjectDataProps) {
             </div>
             <div className="laptop:col-start-7 laptop:col-span-6 tablet:col-start-5 tablet:col-span-5 col-span-4 flex justify-between">
               <Link
-                href={`/project/${projectData[index].slug.current}`}
+                href={`/${projectData[index].slug.current}`}
                 className="z-20"
               >
                 <motion.div
