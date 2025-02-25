@@ -4,7 +4,7 @@ import Grid from "@/components/ui/grid/project";
 import { useViewMode } from "@/context/ViewModeContext";
 import type ProjectType from "@/types/project";
 import { UIImageSanity } from "../ui/image/sanity";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import ListDesktop from "./ListDesktop";
 import ListMobile from "./ListMobile";
@@ -18,6 +18,7 @@ export default function ProjectListComponent({
 }: ProjectListProps) {
   const { viewMode } = useViewMode();
   const [hoveredImageId, setHoveredImageId] = useState<string | null>(null);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
 
   const gridAnimationVariant = {
     hidden: { opacity: 0 },
@@ -27,7 +28,10 @@ export default function ProjectListComponent({
     }),
   };
   return (
-    <div className="mt-[84px] ml-5 mr-5 font-ppeiko font-thin">
+    <div
+      className="pt-[84px] pl-5 pr-5 font-ppeiko font-thin h-full overflow-y-scroll"
+      ref={scrollRef}
+    >
       <div>
         {viewMode === "grid" ? (
           <Grid className="gap-x-5">
@@ -65,7 +69,7 @@ export default function ProjectListComponent({
         ) : (
           <>
             <ListDesktop projectArray={projectArray} />
-            <ListMobile projectArray={projectArray} />
+            <ListMobile projectArray={projectArray} scrollRef={scrollRef} />
           </>
         )}
       </div>

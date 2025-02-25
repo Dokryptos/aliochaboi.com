@@ -3,23 +3,29 @@ import { motion } from "framer-motion";
 import { UIImageSanity } from "../ui/image/sanity";
 import ProjectType from "@/types/project";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, RefObject } from "react";
 import MobileArrowDown from "@/public/icons/mobile-arrowDown.svg";
 import Image from "next/image";
 
 interface ListMobileProps {
   projectArray: ProjectType[];
+  scrollRef: RefObject<HTMLDivElement | null>;
 }
 
-export default function ListMobile({ projectArray }: ListMobileProps) {
+export default function ListMobile({
+  projectArray,
+  scrollRef,
+}: ListMobileProps) {
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const projectHeight = 300;
   const totalHeight = (projectArray.length + 1) * projectHeight;
 
   const updateSelectedIndex = () => {
-    const scrollTop = window.scrollY;
+    if (!scrollRef.current) return;
+    const scrollTop = scrollRef.current.scrollTop;
     const totalScrollHeight =
-      document.documentElement.scrollHeight - window.innerHeight;
+      scrollRef.current.scrollHeight -
+      scrollRef.current.getBoundingClientRect().height;
 
     let newIndex = Math.floor(scrollTop / projectHeight);
 
@@ -36,10 +42,13 @@ export default function ListMobile({ projectArray }: ListMobileProps) {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", updateSelectedIndex);
+    if (!scrollRef.current) return;
+    scrollRef.current.addEventListener("scroll", updateSelectedIndex);
 
     return () => {
-      window.removeEventListener("scroll", updateSelectedIndex);
+      if (!scrollRef.current) return;
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      scrollRef.current.removeEventListener("scroll", updateSelectedIndex);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedIndex]);
@@ -56,7 +65,7 @@ export default function ListMobile({ projectArray }: ListMobileProps) {
 
   return (
     <div
-      className="laptop:hidden flex font-ppeiko overflow-y-auto mt-[84px] "
+      className="laptop:hidden flex font-ppeiko overflow-y-auto"
       style={{ height: totalHeight }}
     >
       <List className="fixed mr-5">
