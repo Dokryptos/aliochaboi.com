@@ -35,18 +35,18 @@ export default function HomeComponent({ projectData }: ProjectDataProps) {
           <div className="flex items-center h-dvh pt-[80px] pb-[64px]">
             <Link
               href={`/${projectData[index].slug.current}`}
-              className="z-20 h-auto w-auto laptop:flex hidden"
+              className="h-full w-full laptop:flex hidden z-30"
             >
               <UIImageSanity
                 asset={projectData[index].thumbnail}
                 alt="Carrousel Project Home"
-                className="object-contain h-full w-full laptop:hidden flex"
+                className="object-contain h-full w-full laptop:flex hidden"
               />
             </Link>
             <UIImageSanity
               asset={projectData[index].thumbnail}
               alt="Carrousel Project Home"
-              className="object-contain h-full w-full"
+              className="object-contain h-full w-full laptop:hidden flex"
             />
           </div>
         </div>
