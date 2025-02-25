@@ -4,12 +4,25 @@ import Grid from "@/components/ui/grid";
 import { useViewMode } from "@/context/ViewModeContext";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 export default function LayoutNavbar() {
   const pathname = usePathname();
   const { viewMode, setViewMode } = useViewMode();
 
   const bgColor = pathname === "/info" ? "bg-principal" : "bg-white";
+
+  useEffect(() => {
+    let themeColor = "#ffffff";
+
+    if (pathname.includes("/info")) {
+      themeColor = "#B26455";
+    } else themeColor = "#ffffff";
+
+    document
+      .querySelector("meta[name='theme-color']")
+      ?.setAttribute("content", themeColor);
+  }, [pathname]);
 
   return (
     <nav
