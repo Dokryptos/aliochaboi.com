@@ -38,6 +38,7 @@ export const UIImageSanity = ({
     .blur(100)
     .url();
 
+  console.log(blurUrl);
   return (
     <Image
       src={imageUrl}
