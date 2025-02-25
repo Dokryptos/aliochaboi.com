@@ -2,7 +2,7 @@ import Grid from "@/components/ui/grid/index";
 
 export default async function InfoPage() {
   return (
-    <div className="h-auto tablet:h-screen w-screen font-neueGrotesk bg-principal pt-[86px] font-normal text-[16px]/[21px] tablet:text-[20px]/[26px]">
+    <div className="h-dvh overflow-y-scroll tablet:h-screen w-full font-neueGrotesk bg-principal pt-[86px] font-normal text-[16px]/[21px] tablet:text-[20px]/[26px]">
       <Grid className="gap-0 tablet:gap-5 ">
         <div className="pb-10 col-span-4 pl-5 pr-5 tablet:col-start-1 tablet:col-span-6 laptop:col-span-5">
           <p className="pb-3">

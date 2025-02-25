@@ -77,7 +77,7 @@ export default function ListMobile({
             animate="visible"
             variants={listAnimationVariant}
           >
-            <Link href={`/${project?.slug?.current}`}>
+            <Link href={`/project/${project?.slug?.current}`}>
               <h2
                 className={`z-20 mix-blend-difference relative flex tablet:text-[25px]/[32px] text-[18px]/[23px]  ${projectArray[selectedIndex]?._id === project._id ? "text-black" : "text-[#818181]"}`}
               >

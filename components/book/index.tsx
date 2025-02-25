@@ -10,7 +10,7 @@ interface BookDataProps {
 
 export default function BookComponent({ bookArray }: BookDataProps) {
   return (
-    <div className="h-full w-full mt-[84px] pr-5 pl-5">
+    <div className="h-dvh overflow-y-scroll w-full pt-[84px] pr-5 pl-5">
       <Grid className="text-[16px]/[21px] tablet:gap-5">
         {bookArray.map((book: BookType) => (
           <div
