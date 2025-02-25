@@ -23,9 +23,13 @@ export default function LayoutNavbar() {
         </div>
 
         <div className="laptop:col-start-7 tablet:col-start-5 flex col-start-1 col-span-2 pl-5 tablet:pl-0">
-          <Link className="pt-5 pb-10" href="/project">
+          <Link
+            className={` pt-5 pb-10 ${pathname.includes("/project") ? "italic" : "not-italic"}`}
+            href="/project"
+          >
             Index
           </Link>
+
           {/* Affichage du Toggle List/Grid uniquement sur la page Project */}
           {pathname.includes("/project") && (
             <div className="pt-5 pl-3 pb-10 font-ppeiko text-[10px] laptop:text-[12px] flex items-center">
@@ -51,13 +55,19 @@ export default function LayoutNavbar() {
         </div>
 
         <div className="laptop:col-start-9 tablet:col-start-7 flex col-start-3">
-          <Link className="pt-5 pb-10" href="/info">
+          <Link
+            className={` pt-5 pb-10 ${pathname.includes("/info") ? "italic" : "not-italic"}`}
+            href="/info"
+          >
             Infos
           </Link>
         </div>
 
         <div className="laptop:col-start-12 tablet:col-start-9 col-start-4 pr-5 flex justify-end">
-          <Link className="pt-5 pb-10" href="/book">
+          <Link
+            className={` pt-5 pb-10 ${pathname.includes("/book") ? "italic" : "not-italic"}`}
+            href="/book"
+          >
             Books
           </Link>
         </div>
