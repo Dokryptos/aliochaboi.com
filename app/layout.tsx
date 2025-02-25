@@ -44,6 +44,7 @@ export default function RootLayout({ children }: Props) {
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
         />
+        <meta name="theme-color" content="#ffffff" />
       </head>
       <body
         className={`${neueHaasGrotesk.variable} ${ppeikoThin.variable} h-full font-sans text-black anthialiased`}
