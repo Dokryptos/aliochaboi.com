@@ -56,7 +56,7 @@ export default function ProjectPage({
     <Grid className="gap-5 tablet:px-0 h-full overflow-hidden">
       <div className="pr-5 pl-5 tablet:p-0 laptop:col-start-3 justify-center laptop:col-span-8 col-start-1 col-span-4 tablet:col-start-2 tablet:col-span-7 flex">
         <motion.div
-          className="inset-0 flex items-center h-dvh"
+          className="inset-0 flex items-center h-dvh pt-[80px] pb-[64px]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -65,7 +65,7 @@ export default function ProjectPage({
           <UIImageSanity
             asset={currentProject.gallery[currentImageIndex].asset}
             alt="Carrousel Project Home"
-            className="object-contain h-auto max-w-full laptop:max-h-[608px] tablet:max-h-[752px] max-h-[80vh]"
+            className="object-contain h-full w-full"
           />
         </motion.div>
       </div>

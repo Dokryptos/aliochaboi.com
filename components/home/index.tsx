@@ -33,7 +33,7 @@ export default function HomeComponent({ projectData }: ProjectDataProps) {
       <Grid className="gap-5 tablet:px-0 h-full overflow-hidden">
         <div className="pr-5 pl-5 tablet:p-0 laptop:col-start-3 justify-center laptop:col-span-8 col-start-1 col-span-4 tablet:col-start-2 tablet:col-span-7 flex">
           <motion.div
-            className="inset-0 flex items-center h-dvh"
+            className="inset-0 flex items-center h-dvh pt-[80px] pb-[64px]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
@@ -45,13 +45,13 @@ export default function HomeComponent({ projectData }: ProjectDataProps) {
               <UIImageSanity
                 asset={projectData[index].thumbnail}
                 alt="Carrousel Project Home"
-                className="object-contain h-auto max-w-full laptop:max-h-[560px] tablet:max-h-[600px] max-h-[455px]"
+                className="object-contain h-full w-full laptop:hidden flex"
               />
             </Link>
             <UIImageSanity
               asset={projectData[index].thumbnail}
               alt="Carrousel Project Home"
-              className="object-contain laptop:hidden block h-auto max-w-full laptop:max-h-[560px] tablet:max-h-[590px] max-h-[80vh]"
+              className="object-contain h-full w-full"
             />
           </motion.div>
         </div>
