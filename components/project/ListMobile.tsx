@@ -101,7 +101,7 @@ export default function ListMobile({ projectArray }: ListMobileProps) {
         >
           Back
         </Link>
-        <Link href={`/${projectArray[selectedIndex]?.slug.current}`}>
+        <Link href={`/project/${projectArray[selectedIndex]?.slug.current}`}>
           <UIImageSanity
             key={projectArray[selectedIndex]._id}
             asset={projectArray[selectedIndex].thumbnail.asset}
