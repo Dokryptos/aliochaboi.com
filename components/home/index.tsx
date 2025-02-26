@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import ProjectType from "@/types/project";
 import Grid from "../ui/grid";
@@ -7,6 +7,7 @@ import CarouselNavigation from "@/components/carousel/navigation";
 import { UIImageSanity } from "../ui/image/sanity";
 import Intro from "../intro";
 import Link from "next/link";
+import { urlForImage } from "@/sanity/lib/image";
 
 type ProjectDataProps = {
   projectData: ProjectType[]; // Liste de tous les projets
@@ -14,8 +15,27 @@ type ProjectDataProps = {
 
 export default function HomeComponent({ projectData }: ProjectDataProps) {
   const [index, setIndex] = useState(0);
-
   if (!projectData.length || !projectData[index]) return null;
+  // Preloading Img
+  console.log(projectData);
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    if (!projectData) return;
+
+    projectData.forEach((asset) => {
+      const thumbnailAsset = asset.thumbnail;
+      if (thumbnailAsset?._upload) return;
+
+      const img = new Image();
+      img.src = urlForImage(thumbnailAsset)
+        .fit("max")
+        .maxWidth(1440)
+        .maxHeight(1440)
+        .quality(75)
+        .url();
+    });
+  }, [projectData]);
 
   const nextProject = () => {
     setIndex((prevIndex) => (prevIndex + 1) % projectData.length);

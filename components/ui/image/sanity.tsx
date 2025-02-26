@@ -30,16 +30,15 @@ export const UIImageSanity = ({
     .auto("format")
     .quality(75)
     .url();
-  console.log(imageUrl);
+
   return (
     <Image
       src={imageUrl}
       className={className}
       alt={alt}
-      loading="eager"
       width={width}
       height={height}
-      sizes="(max-width: 1024px) 100vw, 1440px"
+      sizes="(max-width: 1040px) 100vw, 1040px"
     />
   );
 };

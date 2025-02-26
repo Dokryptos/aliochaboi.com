@@ -1,21 +1,3 @@
-// export const POSTS_QUERY =
-//   defineQuery(`*[_type == "post" && defined(slug.current)][0...12]{
-//   _id,
-//   title,
-//   shortTitle,
-//   _updatedAt,
-//   description,
-//   thumbnail,
-//   "gallery": gallery[] {
-//     _type == 'image' => @,
-//   },
-//   tags,
-//   type,
-//   project,
-//   "slug": slug.current,
-//   details,
-// }`);
-
 import { defineQuery } from "next-sanity";
 import { sanityFetch } from "@/sanity/lib/live";
 import ProjectType from "@/types/project";
