@@ -22,7 +22,7 @@ export default function ProjectPage({
     : [projectArray];
 
   const currentProjectIndex = projectsArray.findIndex(
-    (p) => p.slug.current === projectData.slug.current
+    (p) => p.slug.current === projectData?.slug.current
   );
   const currentProject = projectsArray[currentProjectIndex];
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
