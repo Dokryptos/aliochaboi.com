@@ -36,6 +36,7 @@ export const UIImageSanity = ({
       src={imageUrl}
       className={className}
       alt={alt}
+      loading="eager"
       width={width}
       height={height}
       sizes="(max-width: 1040px) 100vw, 1040px"
