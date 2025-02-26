@@ -39,7 +39,7 @@ export default function ProjectPage({
       );
     }
   };
-
+  console.log(currentProject.gallery[currentImageIndex]);
   const prevImage = () => {
     if (currentImageIndex === 0) {
       // Si c'est la première image, passer au projet précédent
