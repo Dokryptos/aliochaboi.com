@@ -11,18 +11,6 @@ export default function LayoutNavbar() {
 
   const bgColor = pathname === "/info" ? "bg-principal" : "bg-white";
 
-  // useEffect(() => {
-  //   let themeColor = "#ffffff";
-
-  //   if (pathname.includes("/info")) {
-  //     themeColor = "#";
-  //   } else themeColor = "#ffffff";
-
-  //   document
-  //     .querySelector("meta[name='theme-color']")
-  //     ?.setAttribute("content", themeColor);
-  // }, [pathname]);
-
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-20 font-neueGrotesk text-[16px]/5 laptop:text-[20px]/[26px]   ${bgColor}`}

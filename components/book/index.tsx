@@ -1,7 +1,6 @@
 "use client";
 import type BookType from "@/types/book";
 import { UIImageSanity } from "../ui/image/sanity";
-import Link from "next/link";
 import Grid from "@/components/ui/grid/index";
 import { motion } from "framer-motion";
 
@@ -30,7 +29,7 @@ export default function BookComponent({ bookArray }: BookDataProps) {
             key={book._id}
             className="pb-6 col-span-4 tablet:col-span-3 laptop:col-span-4"
           >
-            <Link href={book.link}>
+            <a href={book.link} target="_blank">
               <UIImageSanity
                 asset={book.thumbnail.asset}
                 className="pb-3"
@@ -44,7 +43,7 @@ export default function BookComponent({ bookArray }: BookDataProps) {
                   Product by <i>{book.productBy}</i>
                 </p>
               </div>
-            </Link>
+            </a>
           </motion.div>
         ))}
       </Grid>
