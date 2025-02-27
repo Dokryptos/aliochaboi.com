@@ -17,7 +17,6 @@ export default function HomeComponent({ projectData }: ProjectDataProps) {
   const [index, setIndex] = useState(0);
   if (!projectData.length || !projectData[index]) return null;
   // Preloading Img
-  console.log(projectData);
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
