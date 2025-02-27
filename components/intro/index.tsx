@@ -46,13 +46,13 @@ export default function Intro() {
       {showIntro && (
         <div>
           <motion.div
-            className={`fixed inset-0 z-30 bg-principal ${isVisibleBg ? "block" : "hidden"}`}
+            className={`fixed inset-0 z-40 bg-principal ${isVisibleBg ? "block" : "hidden"}`}
             initial={{ y: 0 }}
             animate={{ y: "-100%" }}
             transition={{ duration: 0.5, delay: 1, ease: "easeOut" }}
           ></motion.div>
           <motion.div
-            className={`fixed z-40 mt-[80px] mb-[80px] inset-0 flex items-center justify-center ${isVisibleH1 ? "block" : "hidden"}`}
+            className={`fixed z-50 mt-[80px] mb-[80px] inset-0 flex items-center justify-center ${isVisibleH1 ? "block" : "hidden"}`}
           >
             <motion.h1
               className="font-neueGrotesk mix-blend-difference text-black dekstop:text-[70px] tablet:text-[45px] text-[35px]"
