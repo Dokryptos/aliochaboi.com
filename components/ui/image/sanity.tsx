@@ -1,6 +1,6 @@
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { urlForImage } from "@/sanity/lib/image";
-import Image from "next/image";
+import { HTMLProps } from "react";
 
 export type UIImageSanityProps = {
   // linked asset from sanity
@@ -9,36 +9,25 @@ export type UIImageSanityProps = {
   alt: string;
   // optional className
   className?: string;
-  quality?: number;
-  width?: number;
-  height?: number;
-};
+} & HTMLProps<HTMLImageElement>;
 
 export const UIImageSanity = ({
   asset,
   alt,
   className,
-  height = 1024,
-  width = 768,
+  ...props
 }: UIImageSanityProps) => {
   if (!asset) return null;
 
-  const imageUrl = urlForImage(asset)
-    .fit("max")
-    .maxWidth(1440)
-    .maxHeight(1440)
-    .quality(75)
-    .url();
+  const imageUrl = urlForImage(asset).url();
 
   return (
-    <Image
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
       src={imageUrl}
       className={className}
       alt={alt}
-      loading="eager"
-      width={width}
-      height={height}
-      sizes="(max-width: 1040px) 100vw, 1040px"
+      {...props}
     />
   );
 };

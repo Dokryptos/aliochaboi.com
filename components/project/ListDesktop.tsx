@@ -23,7 +23,7 @@ export default function ListDesktop({ projectArray }: ListDesktopProps) {
   };
 
   return (
-    <List className="laptop:flex hidden">
+    <List className="laptop:flex hidden pb-[60px]">
       {projectArray.map((project: ProjectType, i: number) => (
         <motion.div
           key={project._id}

@@ -3,9 +3,10 @@ import { motion } from "framer-motion";
 import { UIImageSanity } from "../ui/image/sanity";
 import ProjectType from "@/types/project";
 import Link from "next/link";
-import { useState, useEffect, RefObject } from "react";
+import { useState, useEffect, RefObject, useCallback, MouseEvent as ReactMouseEvent } from "react";
 import MobileArrowDown from "@/public/icons/mobile-arrowDown.svg";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface ListMobileProps {
   projectArray: ProjectType[];
@@ -53,6 +54,48 @@ export default function ListMobile({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedIndex]);
 
+  const [hoveringClickableElement, setHoveringClickableElement] =
+    useState<boolean>(false);
+
+  const router = useRouter();
+  const findHoveredElement = (event: MouseEvent) => {
+    const elementsHref = document.querySelectorAll("[data-href]");
+    return [...elementsHref].find((element) => {
+      const rect = element.getBoundingClientRect();
+      if (
+        event.pageX >= rect.left &&
+        event.pageX <= rect.right &&
+        event.pageY >= rect.top &&
+        event.pageY <= rect.bottom
+      )
+        return true;
+    });
+  };
+  const onClickList = (event: ReactMouseEvent) => {
+    const hoveredElement = findHoveredElement(event as unknown as MouseEvent);
+    if (hoveredElement) {
+      const href = hoveredElement.getAttribute("data-href");
+      if (href) router.push(href);
+    }
+  };
+  const onMouseMove = useCallback(
+    (event: MouseEvent) => {
+      const hoveredElement = findHoveredElement(event);
+
+      if (hoveredElement && !hoveringClickableElement)
+        setHoveringClickableElement(true);
+      else if (!hoveredElement && hoveringClickableElement)
+        setHoveringClickableElement(false);
+    },
+    [hoveringClickableElement]
+  );
+  useEffect(() => {
+    window.addEventListener("mousemove", onMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", onMouseMove);
+    };
+  }, [hoveringClickableElement, onMouseMove]);
+
   const listAnimationVariant = {
     hidden: { opacity: 0 },
     visible: (i: number) => ({
@@ -66,9 +109,13 @@ export default function ListMobile({
   return (
     <div
       className="laptop:hidden flex font-ppeiko overflow-y-auto"
-      style={{ height: totalHeight }}
+      style={{
+        height: totalHeight,
+        cursor: hoveringClickableElement ? "pointer" : "default",
+      }}
+      onClick={onClickList}
     >
-      <List className="fixed mr-5 bg-white">
+      <List className="fixed mr-5 bg-white pointer-events-none">
         {projectArray.map((project: ProjectType, i: number) => (
           <motion.div
             key={project._id}
@@ -77,14 +124,13 @@ export default function ListMobile({
             animate="visible"
             variants={listAnimationVariant}
           >
-            <Link href={`/${project?.slug?.current}`}>
-              <h2
-                className={`z-20 mix-blend-difference relative flex tablet:text-[25px]/[32px] text-[18px]/[23px] ${projectArray[selectedIndex]?._id === project._id ? "text-white z-20" : "text-[#818181]"}`}
-              >
-                {project?.title}
-                <p className="pl-1 pr-1 text-[#818181]">/</p>
-              </h2>
-            </Link>
+            <h2
+              data-href={`/${project?.slug?.current}`}
+              className={`z-20 mix-blend-difference relative flex tablet:text-[25px]/[32px] text-[18px]/[23px] ${projectArray[selectedIndex]?._id === project._id ? "text-white z-20" : "text-[#818181]"}`}
+            >
+              {project?.title}
+              <p className="pl-1 pr-1 text-[#818181]">/</p>
+            </h2>
           </motion.div>
         ))}
         <motion.div
@@ -106,18 +152,17 @@ export default function ListMobile({
         </motion.div>
         <Link
           href={`/`}
-          className="text-black text-[16px]/[21px] font-neueGrotesk fixed bottom-5 left-5 z-10"
+          className="text-black text-[16px]/[21px] font-neueGrotesk fixed bottom-5 left-5 z-20 pointer-events-auto"
         >
           Back
         </Link>
-        <Link href={`/${projectArray[selectedIndex]?.slug.current}`}>
-          <UIImageSanity
-            key={projectArray[selectedIndex]._id}
-            asset={projectArray[selectedIndex].thumbnail.asset}
-            alt={`Thumbnail hovered ${projectArray[selectedIndex]._id}`}
-            className="bottom-5 fixed right-5 z-10 max-h-[215px] max-w-[250px] tablet:max-w-[575px] tablet:max-h-[530px] w-auto"
-          />
-        </Link>
+        <UIImageSanity
+          key={projectArray[selectedIndex]._id}
+          asset={projectArray[selectedIndex].thumbnail.asset}
+          alt={`Thumbnail hovered ${projectArray[selectedIndex]._id}`}
+          className="bottom-5 fixed right-5 z-10 max-h-[215px] max-w-[250px] tablet:max-w-[575px] tablet:max-h-[530px] w-auto pointer-events-none"
+          data-href={`/${projectArray[selectedIndex]?.slug.current}`}
+        />
       </List>
     </div>
   );

@@ -6,16 +6,31 @@ import type projectType from "@/types/project";
 
 const PROJECT_QUERY = defineQuery(`
   {
-  "project": *[
-    _type == "project" &&
-    slug.current == $slug
-  ][0]{
-  ...,
-},
-"projectArray": *[
-  _type == "project"
-  && defined(slug.current)
-]{_id, title, slug, description, thumbnail, gallery, tags, details, shortTitle }
+    "project": *[
+      _type == "project" &&
+      slug.current == $slug
+    ][0]{
+    ...
+  },
+
+  "projectArray": *[
+    _type == "project"
+    && defined(slug.current)
+  ]{
+    _id,
+    title,
+    slug,
+    description,
+    thumbnail,
+    "gallery": gallery[
+      asset != null
+    ] {
+      _type == 'image' => @,
+    },
+    tags,
+    details,
+    shortTitle
+  }
 }
 `);
 

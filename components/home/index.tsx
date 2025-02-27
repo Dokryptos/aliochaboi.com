@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import ProjectType from "@/types/project";
 import Grid from "../ui/grid";
@@ -15,26 +15,28 @@ type ProjectDataProps = {
 
 export default function HomeComponent({ projectData }: ProjectDataProps) {
   const [index, setIndex] = useState(0);
-  if (!projectData.length || !projectData[index]) return null;
-  // Preloading Img
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const preloadingKey = useMemo(() => {
+    if (!projectData) return;
+
+    return projectData.map((asset) => {
+      const thumbnailAsset = asset.thumbnail;
+      return urlForImage(thumbnailAsset).url();
+    }).join('.');
+  }, [projectData]);
   useEffect(() => {
     if (!projectData) return;
 
     projectData.forEach((asset) => {
       const thumbnailAsset = asset.thumbnail;
-      if (thumbnailAsset?._upload) return;
 
       const img = new Image();
-      img.src = urlForImage(thumbnailAsset)
-        .fit("max")
-        .maxWidth(1440)
-        .maxHeight(1440)
-        .quality(75)
-        .url();
+      img.src = urlForImage(thumbnailAsset).url();
     });
-  }, [projectData]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [preloadingKey]);
+
+  if (!projectData.length || !projectData[index]) return null;
 
   const nextProject = () => {
     setIndex((prevIndex) => (prevIndex + 1) % projectData.length);

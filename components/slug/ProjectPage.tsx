@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import ProjectType from "@/types/project";
 import Grid from "../ui/grid";
@@ -29,21 +29,26 @@ export default function ProjectPage({
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
 
   // Preloading Img
+  const preloadingKey = useMemo(() => {
+    if (!currentProject.gallery) return;
+
+    console.log("preloadingKey", currentProject.gallery);
+
+    return currentProject.gallery
+      .map((asset) => {
+        return urlForImage(asset).url();
+      })
+      .join(".");
+  }, [currentProject?.gallery]);
   useEffect(() => {
     if (!currentProject?.gallery) return;
 
     currentProject.gallery.forEach((asset) => {
-      if (asset?._upload) return;
       const img = new Image();
-      img.src = urlForImage(asset)
-        .fit("max")
-        .maxWidth(1440)
-        .maxHeight(1440)
-        .quality(75)
-        .url();
+      img.src = urlForImage(asset).url();
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [preloadingKey]);
 
   //Navigation function
   const nextImage = () => {

@@ -9,7 +9,7 @@ const builder = createImageUrlBuilder({ projectId, dataset });
 export const urlForImage = (source: SanityImageSource) =>
   builder
     .image(source)
-    .auto("format")
+    .width(1250)
     .fit("max")
-    .maxHeight(1440)
-    .maxWidth(1440);
+    .auto("format")
+    .quality(75);
