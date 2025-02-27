@@ -27,7 +27,6 @@ export const UIImageSanity = ({
     .fit("max")
     .maxWidth(1440)
     .maxHeight(1440)
-    .auto("format")
     .quality(75)
     .url();
 

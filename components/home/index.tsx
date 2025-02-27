@@ -51,15 +51,15 @@ export default function HomeComponent({ projectData }: ProjectDataProps) {
       <Intro />
       <Grid className="gap-5 tablet:px-0 h-full overflow-hidden">
         <div className="pr-5 pl-5 tablet:p-0 laptop:col-start-3 justify-center laptop:col-span-8 col-start-1 col-span-4 tablet:col-start-2 tablet:col-span-7 flex">
-          <div className="flex items-center h-dvh max-h-[610px] pt-[80px] pb-[64px]">
+          <div className="flex items-center h-dvh pt-[110px] pb-[110px]">
             <Link
               href={`/${projectData[index].slug.current}`}
-              className="h-full w-full  laptop:flex hidden z-30"
+              className="h-full w-full laptop:flex items-center hidden z-30"
             >
               <UIImageSanity
                 asset={projectData[index].thumbnail}
                 alt="Carrousel Project Home"
-                className="object-contain h-full w-full laptop:flex  hidden"
+                className="object-contain h-full w-full laptop:flex hidden max-h-[600px]"
               />
             </Link>
             <UIImageSanity
