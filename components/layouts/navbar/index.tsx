@@ -4,7 +4,6 @@ import Grid from "@/components/ui/grid";
 import { useViewMode } from "@/context/ViewModeContext";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
 
 export default function LayoutNavbar() {
   const pathname = usePathname();
