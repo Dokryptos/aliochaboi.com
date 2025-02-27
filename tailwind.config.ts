@@ -14,9 +14,6 @@ export default {
         ppeiko: ["var(--font-ppeiko)"],
       },
       colors: {
-        themeColor: {
-          DEFAULT: "#FFFFFF",
-        },
         background: "var(--background)",
         foreground: "var(--foreground)",
         principal: "#B26455",

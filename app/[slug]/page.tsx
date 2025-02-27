@@ -3,6 +3,7 @@ import { defineQuery } from "next-sanity";
 import { notFound } from "next/navigation";
 import { sanityFetch } from "@/sanity/lib/live";
 import type projectType from "@/types/project";
+import { Viewport } from "next";
 
 const PROJECT_QUERY = defineQuery(`
   {
@@ -33,6 +34,10 @@ const PROJECT_QUERY = defineQuery(`
   }
 }
 `);
+
+export const viewport: Viewport = {
+  themeColor: 'white',
+}
 
 export default async function SlugPage({
   params,

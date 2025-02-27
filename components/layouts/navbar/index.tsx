@@ -12,17 +12,17 @@ export default function LayoutNavbar() {
 
   const bgColor = pathname === "/info" ? "bg-principal" : "bg-white";
 
-  useEffect(() => {
-    let themeColor = "#ffffff";
+  // useEffect(() => {
+  //   let themeColor = "#ffffff";
 
-    if (pathname.includes("/info")) {
-      themeColor = "#B26455";
-    } else themeColor = "#ffffff";
+  //   if (pathname.includes("/info")) {
+  //     themeColor = "#";
+  //   } else themeColor = "#ffffff";
 
-    document
-      .querySelector("meta[name='theme-color']")
-      ?.setAttribute("content", themeColor);
-  }, [pathname]);
+  //   document
+  //     .querySelector("meta[name='theme-color']")
+  //     ?.setAttribute("content", themeColor);
+  // }, [pathname]);
 
   return (
     <nav
