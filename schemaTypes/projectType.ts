@@ -14,7 +14,7 @@ export const projectType = defineType({
       type: "string",
       validation: (rule) =>
         rule.required().error(`Required to generate a page on the website`),
-      description: "The title of the project",
+      description: "The title of the project (Obligation)",
     }),
     defineField({
       name: "slug",
@@ -25,11 +25,10 @@ export const projectType = defineType({
         maxLength: 200,
         slugify: (input) =>
           input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
-        // isUnique: isUniqueAcrossAllDocuments,
       },
       validation: (rule) =>
         rule.required().error(`Required to generate a page on the website`),
-      description: "The slug is the url path of the project",
+      description: "The slug is the url path of the project (Obligation)",
     }),
     defineField({
       name: "thumbnail",
@@ -40,12 +39,15 @@ export const projectType = defineType({
       options: {
         hotspot: true,
       },
-      description: "The first img use for the présentation project",
+      description:
+        "The first image use for the presentation of the project (Obligation)",
     }),
     defineField({
       name: "gallery",
       title: "gallery",
       type: "array",
+      description:
+        "Select all the image you want to render, in Webp for keep the place on the CMS and keep the CMS available with the free version (Obligation) with 1 image",
       validation: (rule) =>
         rule.required().error(`Required to generate a page on the website`),
       of: [
