@@ -4,7 +4,7 @@ import Grid from "@/components/ui/grid/project";
 import { useViewMode } from "@/context/ViewModeContext";
 import type ProjectType from "@/types/project";
 import { UIImageSanity } from "../ui/image/sanity";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import ListDesktop from "./ListDesktop";
 import ListMobile from "./ListMobile";
@@ -20,6 +20,14 @@ export default function ProjectListComponent({
   const [hoveredImageId, setHoveredImageId] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
+  useEffect(() => {
+    console.log(viewMode, "use");
+    const scrollableElement = document.querySelector(".scroll-div");
+    if (scrollableElement) {
+      scrollableElement.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [viewMode]);
+
   const gridAnimationVariant = {
     hidden: { opacity: 0 },
     visible: (i: number) => ({
@@ -29,7 +37,7 @@ export default function ProjectListComponent({
   };
   return (
     <div
-      className="pt-[84px] pl-5 pr-5 font-ppeiko font-thin h-full overflow-y-scroll"
+      className="scroll-div pt-[84px] pl-5 pr-5 font-ppeiko font-thin h-full overflow-y-scroll"
       ref={scrollRef}
     >
       <div>
