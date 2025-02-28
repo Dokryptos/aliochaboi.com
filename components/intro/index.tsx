@@ -10,16 +10,16 @@ export default function Intro() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const hasSeenIntro = sessionStorage.getItem("hasSeenIntro");
+      const hasSeenIntro = sessionStorage.getItem("hasSeenH1Animate");
       if (!hasSeenIntro) {
         setShowIntro(true);
-        sessionStorage.setItem("hasSeenIntro", "true");
+        sessionStorage.setItem("hasSeenH1Animate", "true");
       }
     }
   }, []);
 
   useEffect(() => {
-    const animationSeen = sessionStorage.getItem("animationSeen");
+    const animationSeen = sessionStorage.getItem("animationH1Seen");
 
     if (animationSeen === "true") {
       // Si l'animation a déjà été vue, ne rien faire
@@ -33,7 +33,7 @@ export default function Intro() {
       const timerH1 = setTimeout(() => {
         setIsVisibleH1(false);
         sessionStorage.setItem("animationSeen", "true");
-      }, 2500);
+      }, 1150);
 
       return () => {
         clearTimeout(timerBg);
@@ -41,12 +41,13 @@ export default function Intro() {
       };
     }
   }, []);
+
   return (
     <>
       {showIntro && (
         <div>
           <motion.div
-            className={`fixed inset-0 z-40 bg-principal ${isVisibleBg ? "block" : "hidden"}`}
+            className={`fixed inset-0 z-[45] bg-principal ${isVisibleBg ? "block" : "hidden"}`}
             initial={{ y: 0 }}
             animate={{ y: "-100%" }}
             transition={{ duration: 0.5, delay: 1, ease: "easeOut" }}
@@ -55,7 +56,7 @@ export default function Intro() {
             className={`fixed z-50 mt-[80px] mb-[80px] inset-0 flex items-center justify-center ${isVisibleH1 ? "block" : "hidden"}`}
           >
             <motion.h1
-              className="font-neueGrotesk mix-blend-difference text-black dekstop:text-[70px] tablet:text-[45px] text-[35px]"
+              className="font-neueGrotesk mix-blend-difference dekstop:text-[70px] tablet:text-[45px] text-[35px]"
               initial={{ opacity: 1 }}
               animate={{ opacity: 0 }}
               transition={{ duration: 0.5, delay: 2, ease: "easeOut" }}

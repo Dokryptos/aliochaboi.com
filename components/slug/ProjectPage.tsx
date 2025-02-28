@@ -30,7 +30,7 @@ export default function ProjectPage({
 
   // Preloading Img
   const preloadingKey = useMemo(() => {
-    if (!currentProject.gallery) return;
+    if (!currentProject?.gallery) return;
 
     console.log("preloadingKey", currentProject.gallery);
 

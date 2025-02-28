@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect, useMemo } from "react";
-import { motion } from "framer-motion";
 import ProjectType from "@/types/project";
 import Grid from "../ui/grid";
 import CarouselNavigation from "@/components/carousel/navigation";
@@ -8,6 +7,7 @@ import { UIImageSanity } from "../ui/image/sanity";
 import Intro from "../intro";
 import Link from "next/link";
 import { urlForImage } from "@/sanity/lib/image";
+import { motion } from "framer-motion";
 
 type ProjectDataProps = {
   projectData: ProjectType[]; // Liste de tous les projets
@@ -15,14 +15,18 @@ type ProjectDataProps = {
 
 export default function HomeComponent({ projectData }: ProjectDataProps) {
   const [index, setIndex] = useState(0);
+  const [isVisibleH1, setIsVisibleH1] = useState(true);
+  const [showH1Animate, setShowH1Animate] = useState(false);
 
   const preloadingKey = useMemo(() => {
     if (!projectData) return;
 
-    return projectData.map((asset) => {
-      const thumbnailAsset = asset.thumbnail;
-      return urlForImage(thumbnailAsset).url();
-    }).join('.');
+    return projectData
+      .map((asset) => {
+        const thumbnailAsset = asset.thumbnail;
+        return urlForImage(thumbnailAsset).url();
+      })
+      .join(".");
   }, [projectData]);
   useEffect(() => {
     if (!projectData) return;
@@ -33,10 +37,8 @@ export default function HomeComponent({ projectData }: ProjectDataProps) {
       const img = new Image();
       img.src = urlForImage(thumbnailAsset).url();
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [preloadingKey]);
-
-  if (!projectData.length || !projectData[index]) return null;
 
   const nextProject = () => {
     setIndex((prevIndex) => (prevIndex + 1) % projectData.length);
@@ -48,12 +50,50 @@ export default function HomeComponent({ projectData }: ProjectDataProps) {
     );
   };
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const hasSeenIntro = sessionStorage.getItem("hasSeenIntro");
+      if (!hasSeenIntro) {
+        setShowH1Animate(true);
+        sessionStorage.setItem("hasSeenIntro", "false");
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    const animationSeen = sessionStorage.getItem("animationSeen");
+
+    if (animationSeen === "true") {
+      setIsVisibleH1(false);
+    } else {
+      const timerH1 = setTimeout(() => {
+        setIsVisibleH1(false);
+      }, 2500);
+
+      return () => {
+        clearTimeout(timerH1);
+      };
+    }
+  }, []);
+
+  if (!projectData.length || !projectData[index]) return null;
+
   return (
     <div>
       <Intro />
       <Grid className="gap-5 tablet:px-0 h-full overflow-hidden">
         <div className="pr-5 pl-5 tablet:p-0 laptop:col-start-3 justify-center laptop:col-span-8 col-start-1 col-span-4 tablet:col-start-2 tablet:col-span-7 flex">
           <div className="flex items-center h-dvh pt-[110px] pb-[110px]">
+            {showH1Animate && (
+              <motion.h1
+                className={`absolute z-40 inset-0 flex items-center justify-center mix-blend-difference text-white dekstop:text-[70px] tablet:text-[45px] text-[35px] ${isVisibleH1 ? "block" : "hidden"}`}
+                initial={{ opacity: 1 }}
+                animate={{ opacity: 0 }}
+                transition={{ duration: 0.5, delay: 2, ease: "easeOut" }}
+              >
+                Aliocha Boi
+              </motion.h1>
+            )}
             <Link
               href={`/${projectData[index].slug.current}`}
               className="h-full w-full laptop:flex items-center hidden z-30"
