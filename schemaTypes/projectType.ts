@@ -1,13 +1,28 @@
 import { defineField, defineType, defineArrayMember } from "sanity";
 // import { isUniqueAcrossAllDocuments } from "../sanity/lib/isUniqueAccrossAllDocument";
 import { ArchiveIcon } from "@sanity/icons";
+import {
+  orderRankField,
+  orderRankOrdering,
+} from "@sanity/orderable-document-list";
 
 export const projectType = defineType({
   name: "project",
   title: "Project",
   type: "document",
   icon: ArchiveIcon,
+  orderings: [orderRankOrdering],
+  fieldsets: [
+    {
+      name: "misc",
+      title: "Misc",
+      options: {
+        columns: 3,
+      },
+    },
+  ],
   fields: [
+    orderRankField({ type: "project", newItemPosition: "before" }),
     defineField({
       name: "title",
       title: "Title",

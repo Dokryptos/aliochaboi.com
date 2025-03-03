@@ -1,12 +1,18 @@
 import { defineField, defineType } from "sanity";
 import { BookIcon } from "@sanity/icons";
+import {
+  orderRankField,
+  orderRankOrdering,
+} from "@sanity/orderable-document-list";
 
 export const bookType = defineType({
   name: "book",
   title: "Book",
   type: "document",
   icon: BookIcon,
+  orderings: [orderRankOrdering],
   fields: [
+    orderRankField({ type: "categorie", newItemPosition: "before" }),
     defineField({
       name: "title",
       title: "Title",

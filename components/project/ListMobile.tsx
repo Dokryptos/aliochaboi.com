@@ -3,7 +3,13 @@ import { motion } from "framer-motion";
 import { UIImageSanity } from "../ui/image/sanity";
 import ProjectType from "@/types/project";
 import Link from "next/link";
-import { useState, useEffect, RefObject, useCallback, MouseEvent as ReactMouseEvent } from "react";
+import {
+  useState,
+  useEffect,
+  RefObject,
+  useCallback,
+  MouseEvent as ReactMouseEvent,
+} from "react";
 import MobileArrowDown from "@/public/icons/mobile-arrowDown.svg";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -143,11 +149,6 @@ export default function ListMobile({
             src={MobileArrowDown}
             alt="Mobile/Pads arrow"
             className="w-[7px] h-[15px] mr-[8px]"
-          />
-          <Image
-            src={MobileArrowDown}
-            alt="Mobile/Pads arrow"
-            className="w-[7px] h-[15px]"
           />
         </motion.div>
         <Link
