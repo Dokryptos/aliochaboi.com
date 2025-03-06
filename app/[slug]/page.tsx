@@ -17,7 +17,7 @@ const PROJECT_QUERY = defineQuery(`
   "projectArray": *[
     _type == "project"
     && defined(slug.current)
-  ]{
+  ] | order(orderRank) {
     _id,
     title,
     slug,
@@ -36,8 +36,8 @@ const PROJECT_QUERY = defineQuery(`
 `);
 
 export const viewport: Viewport = {
-  themeColor: 'white',
-}
+  themeColor: "white",
+};
 
 export default async function SlugPage({
   params,

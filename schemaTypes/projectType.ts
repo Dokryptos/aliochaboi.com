@@ -1,5 +1,4 @@
 import { defineField, defineType, defineArrayMember } from "sanity";
-// import { isUniqueAcrossAllDocuments } from "../sanity/lib/isUniqueAccrossAllDocument";
 import { ArchiveIcon } from "@sanity/icons";
 import {
   orderRankField,
@@ -43,8 +42,7 @@ export const projectType = defineType({
       },
       validation: (rule) =>
         rule.required().error(`Required to generate a page on the website`),
-      description:
-        "The slug is the url path of the project, Can use Generate button but try to keep it clean without ponctuation(, . ; : ! ?) (Obligation)",
+      description: `The slug is the url path of the project, Can use Generate button but try to keep it clean Without ponctuation(, . ; : ! ?) and Without (&é"'(-è_çà)=) (Obligation)`,
     }),
     defineField({
       name: "thumbnail",

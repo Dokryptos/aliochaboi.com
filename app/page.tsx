@@ -3,7 +3,7 @@ import { sanityFetch } from "@/sanity/lib/live";
 import HomeComponent from "@/components/home";
 import { Viewport } from "next";
 
-const EVENTS_QUERY = defineQuery(`*[
+const PROJECTS_QUERY = defineQuery(`*[
   _type == "project"
   && defined(slug.current)
 ] | order(orderRank) {_id, title, slug, thumbnail, gallery, shortTitle }`);
@@ -13,7 +13,7 @@ export const viewport: Viewport = {
 };
 
 export default async function HomePage() {
-  const { data } = await sanityFetch({ query: EVENTS_QUERY });
+  const { data } = await sanityFetch({ query: PROJECTS_QUERY });
   return (
     <main className="font-neueGrotesk">
       <HomeComponent projectData={data} />

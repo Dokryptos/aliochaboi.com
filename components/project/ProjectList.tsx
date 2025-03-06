@@ -21,7 +21,6 @@ export default function ProjectListComponent({
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    console.log(viewMode, "use");
     const scrollableElement = document.querySelector(".scroll-div");
     if (scrollableElement) {
       scrollableElement.scrollTo({ top: 0, behavior: "smooth" });
