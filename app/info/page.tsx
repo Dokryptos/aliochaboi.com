@@ -2,8 +2,8 @@ import Grid from "@/components/ui/grid/index";
 import { Viewport } from "next";
 
 export const viewport: Viewport = {
-  themeColor: '#B26455',
-}
+  themeColor: "#D56745",
+};
 
 export default async function InfoPage() {
   return (

@@ -16,7 +16,7 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        principal: "#B26455",
+        principal: "#D56745",
       },
       width: {
         tablet: "640px",
