@@ -12,7 +12,7 @@ export const bookType = defineType({
   icon: BookIcon,
   orderings: [orderRankOrdering],
   fields: [
-    orderRankField({ type: "categorie", newItemPosition: "before" }),
+    orderRankField({ type: "book" }),
     defineField({
       name: "title",
       title: "Title",

@@ -3,8 +3,8 @@ import ProjectListComponent from "@/components/project/ProjectList";
 import { Viewport } from "next";
 
 export const viewport: Viewport = {
-  themeColor: 'white',
-}
+  themeColor: "white",
+};
 
 export default async function IndexPage() {
   const projects = await getAllProjects();

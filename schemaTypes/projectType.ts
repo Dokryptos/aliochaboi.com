@@ -22,7 +22,7 @@ export const projectType = defineType({
     },
   ],
   fields: [
-    orderRankField({ type: "project", newItemPosition: "before" }),
+    orderRankField({ type: "project" }),
     defineField({
       name: "title",
       title: "Title",

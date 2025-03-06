@@ -16,7 +16,7 @@ export async function getAllProjects(): Promise<ProjectType[]> {
 }
 
 export const BOOK_QUERY = defineQuery(`*[
-  _type == "book"]
+  _type == "book"] | order(orderRank)
   {_id, title, slug, thumbnail, productBy, details, link }`);
 
 export async function getBook(): Promise<BookType[]> {
@@ -35,7 +35,7 @@ export const INDEX_PROJECT_QUERY = defineQuery(`
 "projectArray": *[
   _type == "project"
   && defined(slug.current)
-]{_id, title, slug, description, thumbnail, gallery, tags, details, shortTitle }
+] | order(orderRank) {_id, title, slug, description, thumbnail, gallery, tags, details, shortTitle }
 }
 `);
 

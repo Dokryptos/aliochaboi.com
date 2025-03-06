@@ -44,7 +44,7 @@ export default function ListDesktop({ projectArray }: ListDesktopProps) {
         >
           <Link href={`/${project?.slug?.current}`}>
             <h2
-              className={`z-10  mix-blend-difference relative flex desktop:text-[42px]/[54px] laptop:text-[32px]/[42px] ${hoveredImageId === project._id ? "text-white" : "text-[#818181]"}`}
+              className={`z-10  mix-blend-difference relative flex desktop:text-[42px]/[54px] laptop:text-[25px]/[35px] ${hoveredImageId === project._id ? "text-white" : "text-[#818181]"}`}
             >
               {project?.title}
               <p className="pl-1 pr-1 text-[#818181]">/</p>
@@ -58,7 +58,7 @@ export default function ListDesktop({ projectArray }: ListDesktopProps) {
             key={hoveredImageId}
             asset={hoveredImage}
             alt={`Thumbnail hovered ${hoveredImageId}`}
-            className="bottom-5 fixed right-5 z-0  desktop:max-h-[450px] desktop:max-w-[350px] laptop:max-h-[350px] laptop:max-w-[300px]"
+            className="bottom-5 fixed right-5 z-0  desktop:max-h-[450px] desktop:max-w-[350px] laptop:max-h-[325px] laptop:max-w-[275px]"
           />
         </Link>
       )}
