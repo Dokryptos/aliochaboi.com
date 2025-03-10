@@ -32,8 +32,6 @@ export default function ProjectPage({
   const preloadingKey = useMemo(() => {
     if (!currentProject?.gallery) return;
 
-    console.log("preloadingKey", currentProject.gallery);
-
     return currentProject.gallery
       .map((asset) => {
         return urlForImage(asset).url();
