@@ -101,13 +101,13 @@ export default function HomeComponent({ projectData }: ProjectDataProps) {
               <UIImageSanity
                 asset={projectData[index].thumbnail}
                 alt="Carrousel Project Home"
-                className="object-contain h-full w-full laptop:flex hidden max-h-[600px]"
+                className="object-contain h-full w-full laptop:flex hidden"
               />
             </Link>
             <UIImageSanity
               asset={projectData[index].thumbnail}
               alt="Carrousel Project Home"
-              className="object-contain h-full w-full laptop:hidden flex "
+              className="object-contain h-full mobile:h-auto w-full laptop:hidden flex"
             />
           </div>
         </div>

@@ -82,7 +82,7 @@ export default function ProjectPage({
           <UIImageSanity
             asset={currentProject?.gallery[currentImageIndex].asset}
             alt="Carrousel Project Home"
-            className="object-contain h-full w-full max-h-[600px]"
+            className="object-contain h-full mobile:h-auto w-full max-h-[600px]"
           />
         </div>
       </div>
