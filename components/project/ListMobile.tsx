@@ -161,7 +161,7 @@ export default function ListMobile({
           key={projectArray[selectedIndex]._id}
           asset={projectArray[selectedIndex].thumbnail.asset}
           alt={`Thumbnail hovered ${projectArray[selectedIndex]._id}`}
-          className="bottom-5 fixed right-5 z-10 max-h-[215px] max-w-[250px] tablet:max-w-[575px] tablet:max-h-[530px] w-auto pointer-events-none"
+          className="bottom-5 fixed right-5 z-10 max-h-[215px] max-w-[250px] tablet:max-w-[450px] tablet:max-h-[450px] w-auto pointer-events-none"
           data-href={`/${projectArray[selectedIndex]?.slug.current}`}
         />
       </List>

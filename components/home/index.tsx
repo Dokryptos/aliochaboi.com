@@ -83,7 +83,7 @@ export default function HomeComponent({ projectData }: ProjectDataProps) {
       <Intro />
       <Grid className="gap-5 tablet:px-0 h-full overflow-hidden">
         <div className="pr-5 pl-5 tablet:p-0 laptop:col-start-3 justify-center laptop:col-span-8 col-start-1 col-span-4 tablet:col-start-2 tablet:col-span-7 flex">
-          <div className="flex items-center h-dvh pt-[110px] pb-[110px]">
+          <div className="flex items-center h-dvh pt-[80px] pb-[80px] tablet:pt-[110px] tablet:pb-[110px]">
             {showH1Animate && (
               <motion.h1
                 className={`absolute z-40 inset-0 flex items-center justify-center mix-blend-difference text-white dekstop:text-[70px] tablet:text-[45px] text-[35px] ${isVisibleH1 ? "block" : "hidden"}`}
@@ -107,7 +107,7 @@ export default function HomeComponent({ projectData }: ProjectDataProps) {
             <UIImageSanity
               asset={projectData[index].thumbnail}
               alt="Carrousel Project Home"
-              className="object-contain h-full mobile:h-auto w-full laptop:hidden flex"
+              className="object-contain w-full h-full laptop:hidden flex max-h-[650px]"
             />
           </div>
         </div>

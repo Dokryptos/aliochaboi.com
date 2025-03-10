@@ -78,11 +78,11 @@ export default function ProjectPage({
   return (
     <Grid className="gap-5 tablet:px-0 h-full overflow-hidden">
       <div className="pr-5 pl-5 tablet:p-0 laptop:col-start-3 justify-center laptop:col-span-8 col-start-1 col-span-4 tablet:col-start-2 tablet:col-span-7 flex">
-        <div className="flex items-center h-dvh pt-[110px] pb-[110px]">
+        <div className="flex items-center h-dvh  pt-[80px] pb-[80px] laptop:pt-[120px] laptop:pb-[120px]">
           <UIImageSanity
             asset={currentProject?.gallery[currentImageIndex].asset}
             alt="Carrousel Project Home"
-            className="object-contain h-full  w-full mobile:h-auto"
+            className="object-contain w-full h-full "
           />
         </div>
       </div>

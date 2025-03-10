@@ -58,7 +58,7 @@ export default function ListDesktop({ projectArray }: ListDesktopProps) {
             key={hoveredImageId}
             asset={hoveredImage}
             alt={`Thumbnail hovered ${hoveredImageId}`}
-            className="bottom-5 fixed right-5 z-0  desktop:max-h-[450px] desktop:max-w-[350px] laptop:max-h-[325px] laptop:max-w-[275px]"
+            className="bottom-5 fixed right-5 z-0  desktop:max-h-[450px] desktop:max-w-[400px] laptop:max-h-[400px] laptop:max-w-[350px]"
           />
         </Link>
       )}
