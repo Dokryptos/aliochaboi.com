@@ -40,8 +40,8 @@ export const bookType = defineType({
       description: "The image use for the presentation of Book (Obligation)",
     }),
     defineField({
-      name: "productBy",
-      title: "ProductBy",
+      name: "published",
+      title: "Published",
       validation: (rule) =>
         rule.required().error(`Required to generate a page on the website`),
       type: "string",

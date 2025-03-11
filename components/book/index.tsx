@@ -40,7 +40,7 @@ export default function BookComponent({ bookArray }: BookDataProps) {
                   {book.title}, {book?.details}
                 </p>
                 <p>
-                  Product by <i>{book.productBy}</i>
+                  <i>{book.published}</i>
                 </p>
               </div>
             </a>
