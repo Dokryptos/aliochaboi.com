@@ -12,7 +12,7 @@ export default interface Book {
   slug: Slug;
   title: string;
   thumbnail: SanityImage;
-  productBy: string;
+  published: string;
   details?: string;
   link: string;
 }
