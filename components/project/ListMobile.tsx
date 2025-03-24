@@ -135,7 +135,9 @@ export default function ListMobile({
               className={`z-20 mix-blend-difference relative flex tablet:text-[25px]/[32px] text-[18px]/[23px] ${projectArray[selectedIndex]?._id === project._id ? "text-white z-20" : "text-[#818181]"}`}
             >
               {project?.title}
-              <p className="pl-1 pr-1 text-[#818181]">/</p>
+              {i < projectArray.length - 1 && (
+                <p className="pl-1 pr-1 text-[#818181]">/</p>
+              )}
             </h2>
           </motion.div>
         ))}

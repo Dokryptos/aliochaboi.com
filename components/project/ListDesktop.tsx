@@ -47,7 +47,9 @@ export default function ListDesktop({ projectArray }: ListDesktopProps) {
               className={`z-10  mix-blend-difference relative flex desktop:text-[42px]/[54px] laptop:text-[25px]/[35px] ${hoveredImageId === project._id ? "text-white" : "text-[#818181]"}`}
             >
               {project?.title}
-              <p className="pl-1 pr-1 text-[#818181]">/</p>
+              {i < projectArray.length - 1 && (
+                <p className="pl-1 pr-1 text-[#818181]">/</p>
+              )}
             </h2>
           </Link>
         </motion.div>

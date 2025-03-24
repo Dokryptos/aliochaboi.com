@@ -4,9 +4,18 @@ import { ReactNode } from "react";
 import Navbar from "@/components/layouts/navbar";
 import { ViewModeProvider } from "@/context/ViewModeContext";
 import localFont from "next/font/local";
+import type { Metadata } from "next";
+import Favicon from "../public/icons/favicon.png";
 
 type Props = {
   children: ReactNode;
+};
+
+export const metadata: Metadata = {
+  title: "Aliocha Boi",
+  icons: {
+    icon: [{ rel: "icon", url: Favicon.src }],
+  },
 };
 
 const neueHaasGrotesk = localFont({
