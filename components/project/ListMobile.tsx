@@ -120,7 +120,7 @@ export default function ListMobile({
 
     return () => clearTimeout(timer);
   }, []);
-  console.log(selectedIndex);
+
   return (
     <div
       className="laptop:hidden flex font-ppeiko overflow-y-auto"
