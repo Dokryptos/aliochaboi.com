@@ -18,6 +18,13 @@ export const metadata: Metadata = {
   icons: {
     icon: [{ rel: "icon", url: Favicon.src }],
   },
+  openGraph: {
+    title: "Aliocha Boi",
+    description:
+      "Aliocha is a Franco-Canadian-Italian photographer based in Paris. He is inspired by color, intricate details (textures, materials, and gestures)",
+    siteName: "Aliocha Boi Website",
+    type: "website",
+  },
 };
 
 const neueHaasGrotesk = localFont({
