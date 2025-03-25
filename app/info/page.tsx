@@ -13,12 +13,16 @@ export default async function InfoPage() {
           <p className="pb-3">
             Aliocha is a Franco-Canadian-Italian photographer based in Paris.
             <br />
-            He is driven by color, intricate details (textures, materials, and
+            He is inspired by color, intricate details (textures, materials, and
             gestures), and the interaction between humans and their environment.
             <br />
-            He collaborates with various brands and has been published both in
-            France and internationally. He is releasing his first photography
-            book, Midnight Sun, with Collapse Books.
+            He works with a range of brands and has been published both in
+            France and internationally. He has released his first photography
+            book,{" "}
+            <a href="https://collapsebooks.com/products/midnight-sun-aliocha-boi?variant=49940622016840">
+              Midnight Sun
+            </a>
+            , with Collapse Books.
           </p>
           <div className="pb-6">
             <p>Represented by So Represent.</p>
@@ -43,16 +47,16 @@ export default async function InfoPage() {
           <div className="col-span-4 pl-5 pr-5 tablet:pl-0 laptop:col-span-2 laptop:col-start-1">
             <p className="pb-3 laptop:pb-6">Clients (selection)</p>
             <ul className="pb-10">
+              <li className="pb-1">Chanel</li>
+              <li className="pb-1">Salomon</li>
               <li className="pb-1">Agnès B</li>
               <li className="pb-1">L’Oréal Paris</li>
-              <li className="pb-1">OPPO</li>
               <li className="pb-1">Grand Paris</li>
               <li className="pb-1">Ruinart</li>
               <li className="pb-1">Ateliers Chaumet</li>
               <li className="pb-1">Paraboot</li>
               <li className="pb-1">Uber</li>
               <li className="pb-1">Cahu Paris</li>
-              <li className="pb-1">Unicef</li>
               <li className="pb-1">Voyageurs du Monde</li>
               <li>Louis Vuitton</li>
             </ul>
@@ -61,6 +65,7 @@ export default async function InfoPage() {
             <p className="pb-3 laptop:pb-6">Publications (selection)</p>
             <ul className="pb-5">
               <li className="pb-1">M Le Monde</li>
+              <li className="pb-1">T le Temps</li>
               <li className="pb-1">FT Weekend</li>
               <li className="pb-1">Beau Magazine</li>
               <li className="pb-1">Monocle</li>
