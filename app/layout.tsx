@@ -13,6 +13,8 @@ type Props = {
 
 export const metadata: Metadata = {
   title: "Aliocha Boi",
+  description:
+    "Aliocha is a Franco-Canadian-Italian photographer based in Paris. He is inspired by color, intricate details (textures, materials, and gestures)",
   icons: {
     icon: [{ rel: "icon", url: Favicon.src }],
   },
