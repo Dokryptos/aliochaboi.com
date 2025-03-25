@@ -26,6 +26,7 @@ export default function ListMobile({
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const projectHeight = 300;
   const totalHeight = (projectArray.length + 1) * projectHeight;
+  const [firstAnimationDone, setFirstAnimationDone] = useState(false);
 
   const updateSelectedIndex = () => {
     if (!scrollRef.current) return;
@@ -106,12 +107,20 @@ export default function ListMobile({
     hidden: { opacity: 0 },
     visible: (i: number) => ({
       opacity: 1,
-      transition: { delay: i * 0.1, duration: 0.5 },
+      transition: { delay: i * 0.1, duration: 0.3 },
     }),
   };
 
   const delayArrowAnimation = (projectArray.length + 2) * 0.2;
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setFirstAnimationDone(true);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, []);
+  console.log(selectedIndex);
   return (
     <div
       className="laptop:hidden flex font-ppeiko overflow-y-auto"
@@ -132,7 +141,7 @@ export default function ListMobile({
           >
             <h2
               data-href={`/${project?.slug?.current}`}
-              className={`z-20 mix-blend-difference relative flex tablet:text-[25px]/[32px] text-[18px]/[23px] ${projectArray[selectedIndex]?._id === project._id ? "text-white z-20" : "text-[#818181]"}`}
+              className={`z-20 mix-blend-difference relative flex tablet:text-[25px]/[32px] text-[18px]/[23px] ${!firstAnimationDone && projectArray[selectedIndex]?._id === project._id ? "text-black" : projectArray[selectedIndex]?._id === project._id ? "text-white z-20" : "text-[#818181]"}`}
             >
               {project?.title}
               {i < projectArray.length - 1 && (

@@ -19,7 +19,10 @@ export default async function InfoPage() {
             He works with a range of brands and has been published both in
             France and internationally. He has released his first photography
             book,{" "}
-            <a href="https://collapsebooks.com/products/midnight-sun-aliocha-boi?variant=49940622016840">
+            <a
+              className="italic"
+              href="https://collapsebooks.com/products/midnight-sun-aliocha-boi?variant=49940622016840"
+            >
               Midnight Sun
             </a>
             , with Collapse Books.
