@@ -106,7 +106,7 @@ export default function ListMobile({
     hidden: { opacity: 0 },
     visible: (i: number) => ({
       opacity: 1,
-      transition: { delay: i * 0.2, duration: 0.5 },
+      transition: { delay: i * 0.1, duration: 0.5 },
     }),
   };
 

@@ -18,7 +18,7 @@ export default function ListDesktop({ projectArray }: ListDesktopProps) {
     hidden: { opacity: 0 },
     visible: (i: number) => ({
       opacity: 1,
-      transition: { delay: i * 0.2, duration: 0.5 },
+      transition: { delay: i * 0.1, duration: 0.5 },
     }),
   };
 
@@ -44,7 +44,7 @@ export default function ListDesktop({ projectArray }: ListDesktopProps) {
         >
           <Link href={`/${project?.slug?.current}`}>
             <h2
-              className={`z-10  mix-blend-difference relative flex desktop:text-[42px]/[54px] laptop:text-[25px]/[35px] ${hoveredImageId === project._id ? "text-white" : "text-[#818181]"}`}
+              className={`z-10 mix-blend-difference relative flex desktop:text-[42px]/[54px] laptop:text-[25px]/[35px] ${hoveredImageId === project._id ? "text-white" : "text-[#818181]"}`}
             >
               {project?.title}
               {i < projectArray.length - 1 && (
