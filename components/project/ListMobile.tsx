@@ -111,7 +111,7 @@ export default function ListMobile({
     }),
   };
 
-  const delayArrowAnimation = (projectArray.length + 2) * 0.2;
+  const delayArrowAnimation = (projectArray.length + 2) * 0.1;
 
   useEffect(() => {
     const timer = setTimeout(() => {
