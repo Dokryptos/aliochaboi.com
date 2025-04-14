@@ -17,6 +17,7 @@ export default function HomeComponent({ projectData }: ProjectDataProps) {
   const [index, setIndex] = useState(0);
   const [isVisibleH1, setIsVisibleH1] = useState(true);
   const [showH1Animate, setShowH1Animate] = useState(false);
+  const [LoadingPage, setLoadingPage] = useState(true);
 
   const preloadingKey = useMemo(() => {
     if (!projectData) return;
@@ -56,6 +57,7 @@ export default function HomeComponent({ projectData }: ProjectDataProps) {
       if (!hasSeenIntro) {
         setShowH1Animate(true);
         sessionStorage.setItem("hasSeenIntro", "false");
+        setLoadingPage(false);
       }
     }
   }, []);
@@ -80,77 +82,83 @@ export default function HomeComponent({ projectData }: ProjectDataProps) {
 
   return (
     <div>
-      <Intro />
-      <Grid className="gap-5 tablet:px-0 h-full overflow-hidden">
-        <div className="pr-5 pl-5 tablet:p-0 laptop:col-start-3 justify-center laptop:col-span-8 col-start-1 col-span-4 tablet:col-start-2 tablet:col-span-7 flex">
-          <div className="flex items-center h-dvh pt-[80px] pb-[80px] tablet:pt-[110px] tablet:pb-[110px]">
-            {showH1Animate && (
-              <motion.h1
-                className={`absolute z-40 inset-0 flex items-center justify-center mix-blend-difference text-white dekstop:text-[70px] tablet:text-[45px] text-[35px] ${isVisibleH1 ? "block" : "hidden"}`}
-                initial={{ opacity: 1 }}
-                animate={{ opacity: 0 }}
-                transition={{ duration: 0.5, delay: 2, ease: "easeOut" }}
-              >
-                Aliocha Boi
-              </motion.h1>
-            )}
-            <Link
-              href={`/${projectData[index].slug.current}`}
-              className="h-full w-full laptop:flex items-center hidden z-30"
-            >
-              <UIImageSanity
-                asset={projectData[index].thumbnail}
-                alt="Carrousel Project Home"
-                className="object-contain h-full w-full laptop:flex hidden"
-              />
-            </Link>
-            <UIImageSanity
-              asset={projectData[index].thumbnail}
-              alt="Carrousel Project Home"
-              className="object-contain w-full h-full laptop:hidden flex max-h-[650px]"
-            />
-          </div>
-        </div>
-
-        <CarouselNavigation onPrev={prevProject} onNext={nextProject} />
-        <div className="absolute w-full pb-5 pt-5 bottom-0">
-          <Grid className="gap-5">
-            <div className="laptop:col-start-1 laptop:col-span-6 tablet:block hidden">
-              <button onClick={prevProject} className=" text-black pl-5">
-                Prev
-              </button>
-            </div>
-            <div className="laptop:col-start-7 laptop:col-span-6 tablet:col-start-5 tablet:col-span-5 col-span-4 flex justify-between">
-              <Link
-                href={`/${projectData[index].slug.current}`}
-                className="z-20"
-              >
-                <motion.div
-                  key={projectData[index].title}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="text-black flex items-center pl-5 tablet:pl-0"
+      {LoadingPage ? (
+        <div className="fixed w-100 h-100 z-[100]"></div>
+      ) : (
+        <>
+          <Intro />
+          <Grid className="gap-5 tablet:px-0 h-full overflow-hidden">
+            <div className="pr-5 pl-5 tablet:p-0 laptop:col-start-3 justify-center laptop:col-span-8 col-start-1 col-span-4 tablet:col-start-2 tablet:col-span-7 flex">
+              <div className="flex items-center h-dvh pt-[80px] pb-[80px] tablet:pt-[110px] tablet:pb-[110px]">
+                {showH1Animate && (
+                  <motion.h1
+                    className={`absolute z-40 inset-0 flex items-center justify-center mix-blend-difference text-white dekstop:text-[70px] tablet:text-[45px] text-[35px] ${isVisibleH1 ? "block" : "hidden"}`}
+                    initial={{ opacity: 1 }}
+                    animate={{ opacity: 0 }}
+                    transition={{ duration: 0.5, delay: 2, ease: "easeOut" }}
+                  >
+                    Aliocha Boi
+                  </motion.h1>
+                )}
+                <Link
+                  href={`/${projectData[index].slug.current}`}
+                  className="h-full w-full laptop:flex items-center hidden z-30"
                 >
-                  <p className="mr-3 text-[16px]/[21px] laptop:text-[20px]/[26px]">
-                    {projectData[index].title}
-                  </p>
-                  <p className="text-[10px]/[13px] laptop:text-[12px]/[15px] font-ppeiko">
-                    {index + 1}/{projectData.length}
-                  </p>
-                </motion.div>
-              </Link>
-              <button
-                onClick={nextProject}
-                className="pr-5 text-black tablet:block hidden"
-              >
-                Next
-              </button>
+                  <UIImageSanity
+                    asset={projectData[index].thumbnail}
+                    alt="Carrousel Project Home"
+                    className="object-contain h-full w-full laptop:flex hidden"
+                  />
+                </Link>
+                <UIImageSanity
+                  asset={projectData[index].thumbnail}
+                  alt="Carrousel Project Home"
+                  className="object-contain w-full h-full laptop:hidden flex max-h-[650px]"
+                />
+              </div>
+            </div>
+
+            <CarouselNavigation onPrev={prevProject} onNext={nextProject} />
+            <div className="absolute w-full pb-5 pt-5 bottom-0">
+              <Grid className="gap-5">
+                <div className="laptop:col-start-1 laptop:col-span-6 tablet:block hidden">
+                  <button onClick={prevProject} className=" text-black pl-5">
+                    Prev
+                  </button>
+                </div>
+                <div className="laptop:col-start-7 laptop:col-span-6 tablet:col-start-5 tablet:col-span-5 col-span-4 flex justify-between">
+                  <Link
+                    href={`/${projectData[index].slug.current}`}
+                    className="z-20"
+                  >
+                    <motion.div
+                      key={projectData[index].title}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.5 }}
+                      className="text-black flex items-center pl-5 tablet:pl-0"
+                    >
+                      <p className="mr-3 text-[16px]/[21px] laptop:text-[20px]/[26px]">
+                        {projectData[index].title}
+                      </p>
+                      <p className="text-[10px]/[13px] laptop:text-[12px]/[15px] font-ppeiko">
+                        {index + 1}/{projectData.length}
+                      </p>
+                    </motion.div>
+                  </Link>
+                  <button
+                    onClick={nextProject}
+                    className="pr-5 text-black tablet:block hidden"
+                  >
+                    Next
+                  </button>
+                </div>
+              </Grid>
             </div>
           </Grid>
-        </div>
-      </Grid>
+        </>
+      )}
     </div>
   );
 }
