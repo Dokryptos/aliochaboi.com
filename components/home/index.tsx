@@ -57,8 +57,8 @@ export default function HomeComponent({ projectData }: ProjectDataProps) {
       if (!hasSeenIntro) {
         setShowH1Animate(true);
         sessionStorage.setItem("hasSeenIntro", "false");
-        setLoadingPage(false);
       }
+      setLoadingPage(false);
     }
   }, []);
 
