@@ -11,22 +11,54 @@ export default async function InfoPage() {
       <Grid className="gap-0 tablet:gap-5 select-text">
         <div className="pb-10 col-span-4 pl-5 pr-5 tablet:col-start-1 tablet:col-span-6 laptop:col-span-5">
           <p className="pb-3 ">
-            Aliocha is a Franco-Canadian-Italian photographer based in Paris.
+            Between France, Canada and Italy, Aliocha Boi grew up moving across
+            different countries, cultures, encounters, and landscapes. This
+            composite identity nurtured in him a sensitive connection to places
+            — their rhythms, lights, and colors — as well as to the people who
+            inhabit them.
             <br />
-            He is inspired by color, intricate details (textures, materials, and
-            gestures), and the interaction between humans and their environment.
+            He observes them with an attentive, fascinated presence, capturing
+            details and atmospheres, learning to feel their essence. To create
+            his images, he immerses himself deeply in his subjects, with an
+            attention that is both spontaneous and exacting, within a climate of
+            trust and exchange. He shares what nature, objects, and living
+            beings reveal when one looks at them with sensitivity, patience, and
+            kindness.
             <br />
-            He works with a range of brands and has been published both in
-            France and internationally. He has released his first photography
-            book,{" "}
+            <br />
+            As a photographer, Aliocha engages with reality, yet what he shows
+            is already a memory, gently filtered through emotion. Attention
+            selects, memory condenses. And what remains are impressions: a deep
+            blue, a golden warmth, a marked texture, a blurred gesture, two
+            dominant colors, primary forms, a light, a silence.
+            <br />
+            His images do not capture facts; they retain what imprints itself on
+            his memory, what lingers and moves him.
+            <br />
+            He conveys what he experienced with emotional rather than factual
+            fidelity: atmospheres, endless slownesses, accelerated
+            effervescences. He captures gestures, rituals, and harmonies woven
+            between human beings and the world, sharing sequences of moments
+            that feel almost familiar, as if his memories had become our own.
+            <br />
+            <br />
+            He works for several brands (Chanel, Salomon, Longchamp, Lacoste…)
+            and for French and international publications (M Le Monde,
+            Libération, Regain Magazine…). In 2025, he publishes{" "}
             <a
               className="italic"
               href="https://collapsebooks.com/products/midnight-sun-aliocha-boi?variant=49940622016840"
             >
               Midnight Sun
             </a>
-            , with Collapse Books.
+            with Collapse Books, the result of an immersive residency in the
+            heart of the Arctic. , with Collapse Books.
           </p>
+          <br />
+          <br />
+          Text by Lisa Cadot, 2025
+          <br />
+          <br />
           <div className="pb-6">
             <p>Represented by So Represent.</p>
             <p>Founder of the podcast Vision(s).</p>
