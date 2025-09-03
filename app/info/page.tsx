@@ -15,31 +15,27 @@ export default async function InfoPage() {
             different countries, cultures, encounters, and landscapes. This
             composite identity nurtured in him a sensitive connection to places
             — their rhythms, lights, and colors — as well as to the people who
-            inhabit them.
-            <br />
-            He observes them with an attentive, fascinated presence, capturing
-            details and atmospheres, learning to feel their essence. To create
-            his images, he immerses himself deeply in his subjects, with an
-            attention that is both spontaneous and exacting, within a climate of
-            trust and exchange. He shares what nature, objects, and living
-            beings reveal when one looks at them with sensitivity, patience, and
-            kindness.
+            inhabit them. He observes them with an attentive, fascinated
+            presence, capturing details and atmospheres, learning to feel their
+            essence. To create his images, he immerses himself deeply in his
+            subjects, with an attention that is both spontaneous and exacting,
+            within a climate of trust and exchange. He shares what nature,
+            objects, and living beings reveal when one looks at them with
+            sensitivity, patience, and kindness.
             <br />
             <br />
             As a photographer, Aliocha engages with reality, yet what he shows
             is already a memory, gently filtered through emotion. Attention
             selects, memory condenses. And what remains are impressions: a deep
             blue, a golden warmth, a marked texture, a blurred gesture, two
-            dominant colors, primary forms, a light, a silence.
-            <br />
-            His images do not capture facts; they retain what imprints itself on
-            his memory, what lingers and moves him.
-            <br />
-            He conveys what he experienced with emotional rather than factual
-            fidelity: atmospheres, endless slownesses, accelerated
-            effervescences. He captures gestures, rituals, and harmonies woven
-            between human beings and the world, sharing sequences of moments
-            that feel almost familiar, as if his memories had become our own.
+            dominant colors, primary forms, a light, a silence. His images do
+            not capture facts; they retain what imprints itself on his memory,
+            what lingers and moves him. He conveys what he experienced with
+            emotional rather than factual fidelity: atmospheres, endless
+            slownesses, accelerated effervescences. He captures gestures,
+            rituals, and harmonies woven between human beings and the world,
+            sharing sequences of moments that feel almost familiar, as if his
+            memories had become our own.
             <br />
             <br />
             He works for several brands (Chanel, Salomon, Longchamp, Lacoste…)
@@ -54,7 +50,6 @@ export default async function InfoPage() {
             with Collapse Books, the result of an immersive residency in the
             heart of the Arctic. , with Collapse Books.
           </p>
-          <br />
           <br />
           Text by Lisa Cadot, 2025
           <br />
@@ -83,16 +78,16 @@ export default async function InfoPage() {
             <p className="pb-3 laptop:pb-6">Clients (selection)</p>
             <ul className="pb-10">
               <li className="pb-1">Chanel</li>
+              <li className="pb-1">Lacoste</li>
               <li className="pb-1">Salomon</li>
               <li className="pb-1">Agnès B</li>
               <li className="pb-1">L’Oréal Paris</li>
-              <li className="pb-1">Grand Paris</li>
               <li className="pb-1">Ruinart</li>
               <li className="pb-1">Ateliers Chaumet</li>
               <li className="pb-1">Paraboot</li>
-              <li className="pb-1">Uber</li>
-              <li className="pb-1">Cahu Paris</li>
+              <li className="pb-1">Evaneos</li>
               <li className="pb-1">Voyageurs du Monde</li>
+              <li className="pb-1">Louis Vuitton</li>
               <li>Louis Vuitton</li>
             </ul>
           </div>
@@ -102,15 +97,14 @@ export default async function InfoPage() {
               <li className="pb-1">M Le Monde</li>
               <li className="pb-1">T le Temps</li>
               <li className="pb-1">FT Weekend</li>
-              <li className="pb-1">Beau Magazine</li>
+              <li className="pb-1">FT HTSI</li>
+              <li className="pb-1">Society</li>
               <li className="pb-1">Monocle</li>
-              <li className="pb-1">Fisheye Magazine</li>
+              <li className="pb-1">Family Style</li>
               <li className="pb-1">iD Magazine</li>
-              <li className="pb-1">Nouvel Obs</li>
               <li className="pb-1">Numero</li>
               <li className="pb-1">Libération</li>
-              <li className="pb-1">Original Traveller</li>
-              <li className="pb-1">The Good Life</li>
+              <li className="pb-1">Regain Magazine</li>
             </ul>
           </div>
         </div>
