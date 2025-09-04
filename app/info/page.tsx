@@ -46,9 +46,9 @@ export default async function InfoPage() {
               href="https://collapsebooks.com/products/midnight-sun-aliocha-boi?variant=49940622016840"
             >
               Midnight Sun
-            </a>
+            </a>{" "}
             with Collapse Books, the result of an immersive residency in the
-            heart of the Arctic. , with Collapse Books.
+            heart of the Arctic.
           </p>
           <br />
           Text by Lisa Cadot, 2025
