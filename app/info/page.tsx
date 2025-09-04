@@ -88,7 +88,6 @@ export default async function InfoPage() {
               <li className="pb-1">Evaneos</li>
               <li className="pb-1">Voyageurs du Monde</li>
               <li className="pb-1">Louis Vuitton</li>
-              <li>Louis Vuitton</li>
             </ul>
           </div>
           <div className="col-span-4 pl-5 pr-5 tablet:pl-0 laptop:col-span-3 laptop:col-start-3">
