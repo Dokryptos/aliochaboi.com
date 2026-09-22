@@ -1,11 +1,12 @@
 import { SanityLive } from "@/sanity/lib/live";
 import "./globals.css";
-import { ReactNode } from "react";
+import { CSSProperties, ReactNode } from "react";
 import Navbar from "@/components/layouts/navbar";
 import { ViewModeProvider } from "@/context/ViewModeContext";
 import localFont from "next/font/local";
 import type { Metadata } from "next";
 import Favicon from "../public/icons/favicon.png";
+import { getInfo } from "@/sanity/queries";
 
 type Props = {
   children: ReactNode;
@@ -54,7 +55,9 @@ const ppeikoThin = localFont({
   variable: "--font-ppeiko",
 });
 
-export default function RootLayout({ children }: Props) {
+export default async function RootLayout({ children }: Props) {
+  const info = await getInfo();
+
   return (
     <html lang="en">
       <head>
@@ -65,6 +68,7 @@ export default function RootLayout({ children }: Props) {
       </head>
       <body
         className={`${neueHaasGrotesk.variable} ${ppeikoThin.variable} h-full font-sans text-black anthialiased`}
+        style={{ "--color-principal": info.themeColor } as CSSProperties}
       >
         <ViewModeProvider>
           <Navbar />

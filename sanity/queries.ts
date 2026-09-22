@@ -2,6 +2,7 @@ import { defineQuery } from "next-sanity";
 import { sanityFetch } from "@/sanity/lib/live";
 import ProjectType from "@/types/project";
 import BookType from "@/types/book";
+import InfoType from "@/types/info";
 import { notFound } from "next/navigation";
 
 export const INDEX_QUERY = defineQuery(`*[
@@ -47,5 +48,13 @@ export async function getProject({ params }: { params: { slug: string } }) {
   if (!data) {
     notFound();
   }
+  return data;
+}
+
+export const INFO_QUERY = defineQuery(`*[
+  _type == "info"][0]{ themeColor, bio, clients, publications }`);
+
+export async function getInfo(): Promise<InfoType> {
+  const { data } = await sanityFetch({ query: INFO_QUERY });
   return data;
 }

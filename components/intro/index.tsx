@@ -47,7 +47,7 @@ export default function Intro() {
       {showIntro && (
         <div>
           <motion.div
-            className={`fixed inset-0 z-[45] bg-principal ${isVisibleBg ? "block" : "hidden"}`}
+            className={`fixed inset-0 z-[45] bg-[var(--color-principal)] ${isVisibleBg ? "block" : "hidden"}`}
             initial={{ y: 0 }}
             animate={{ y: "-100%" }}
             transition={{ duration: 0.5, delay: 1, ease: "easeOut" }}
