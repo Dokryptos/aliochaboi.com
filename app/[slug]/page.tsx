@@ -5,13 +5,21 @@ import { sanityFetch } from "@/sanity/lib/live";
 import type projectType from "@/types/project";
 import { Viewport } from "next";
 
+const GALLERY_PROJECTION = `gallery[asset != null]{
+  ...,
+  _type == "video" => {
+    "asset": asset->{playbackId, status}
+  }
+}`;
+
 const PROJECT_QUERY = defineQuery(`
   {
     "project": *[
       _type == "project" &&
       slug.current == $slug
     ][0]{
-    ...
+    ...,
+    ${GALLERY_PROJECTION}
   },
 
   "projectArray": *[
@@ -23,11 +31,7 @@ const PROJECT_QUERY = defineQuery(`
     slug,
     description,
     thumbnail,
-    "gallery": gallery[
-      asset != null
-    ] {
-      _type == 'image' => @,
-    },
+    ${GALLERY_PROJECTION},
     tags,
     details,
     shortTitle

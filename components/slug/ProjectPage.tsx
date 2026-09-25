@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
+import MuxPlayer from "@mux/mux-player-react/lazy";
+import type { MuxCSSProperties } from "@mux/mux-player-react";
 import ProjectType from "@/types/project";
 import Grid from "../ui/grid";
 import CarouselNavigation from "@/components/carousel/navigation";
@@ -28,11 +30,12 @@ export default function ProjectPage({
   const currentProject = projectsArray[currentProjectIndex];
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
 
-  // Preloading Img
+  // Preloading Img (les videos sont chargees/streamees par MuxPlayer lui-meme)
   const preloadingKey = useMemo(() => {
     if (!currentProject?.gallery) return;
 
     return currentProject.gallery
+      .filter((item) => item._type === "image")
       .map((asset) => {
         return urlForImage(asset).url();
       })
@@ -41,10 +44,12 @@ export default function ProjectPage({
   useEffect(() => {
     if (!currentProject?.gallery) return;
 
-    currentProject.gallery.forEach((asset) => {
-      const img = new Image();
-      img.src = urlForImage(asset).url();
-    });
+    currentProject.gallery
+      .filter((item) => item._type === "image")
+      .forEach((asset) => {
+        const img = new Image();
+        img.src = urlForImage(asset).url();
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [preloadingKey]);
 
@@ -75,15 +80,38 @@ export default function ProjectPage({
     }
   };
 
+  const currentItem = currentProject?.gallery[currentImageIndex];
+
   return (
     <Grid className="gap-5 tablet:px-0 h-full overflow-hidden">
       <div className="pr-5 pl-5 tablet:p-0 laptop:col-start-3 justify-center laptop:col-span-8 col-start-1 col-span-4 tablet:col-start-2 tablet:col-span-7 flex">
         <div className="flex items-center h-dvh  pt-[80px] pb-[80px] laptop:pt-[120px] laptop:pb-[120px]">
-          <UIImageSanity
-            asset={currentProject?.gallery[currentImageIndex].asset}
-            alt="Carrousel Project Home"
-            className="object-contain w-full h-full "
-          />
+          {currentItem?._type === "video" ? (
+            <MuxPlayer
+              key={currentImageIndex}
+              playbackId={currentItem.asset.playbackId}
+              streamType="on-demand"
+              autoPlay
+              volume={0.3}
+              loop
+              thumbnailTime={0}
+              placeholder={`https://image.mux.com/${currentItem.asset.playbackId}/thumbnail.jpg?time=0`}
+              style={
+                {
+                  "--controls": "none",
+                  "--media-object-fit": "contain",
+                  "--media-background-color": "transparent",
+                } as MuxCSSProperties
+              }
+              className="object-contain w-full h-full"
+            />
+          ) : (
+            <UIImageSanity
+              asset={currentItem?.asset}
+              alt="Carrousel Project Home"
+              className="object-contain w-full h-full "
+            />
+          )}
         </div>
       </div>
 

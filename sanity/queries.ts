@@ -25,6 +25,13 @@ export async function getBook(): Promise<BookType[]> {
   return data;
 }
 
+const GALLERY_PROJECTION = `gallery[]{
+  ...,
+  _type == "video" => {
+    "asset": asset->{playbackId, status}
+  }
+}`;
+
 export const INDEX_PROJECT_QUERY = defineQuery(`
   {
   "project": *[
@@ -32,11 +39,12 @@ export const INDEX_PROJECT_QUERY = defineQuery(`
     slug.current == $slug
   ][0]{
   ...,
+  ${GALLERY_PROJECTION}
 },
 "projectArray": *[
   _type == "project"
   && defined(slug.current)
-] | order(orderRank) {_id, title, slug, description, thumbnail, gallery, tags, details, shortTitle }
+] | order(orderRank) {_id, title, slug, description, thumbnail, ${GALLERY_PROJECTION}, tags, details, shortTitle }
 }
 `);
 

@@ -61,7 +61,7 @@ export const projectType = defineType({
       title: "gallery",
       type: "array",
       description:
-        "Select all the image you want to render, in Webp for keep the place on the CMS and keep the CMS available with the free version (Obligation) with 1 image",
+        "Select all the image/video you want to render, in Webp for keep the place on the CMS and keep the CMS available with the free version (Obligation) with 1 image",
       validation: (rule) =>
         rule.required().error(`Required to generate a page on the website`),
       of: [
@@ -71,6 +71,10 @@ export const projectType = defineType({
           options: {
             hotspot: true,
           },
+        }),
+        defineArrayMember({
+          type: "mux.video",
+          name: "video",
         }),
       ],
     }),
