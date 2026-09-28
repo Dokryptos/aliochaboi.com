@@ -6,7 +6,15 @@ import { Viewport } from "next";
 const PROJECTS_QUERY = defineQuery(`*[
   _type == "project"
   && defined(slug.current)
-] | order(orderRank) {_id, title, slug, thumbnail, gallery, shortTitle }`);
+] | order(orderRank) {
+  _id, title, slug, thumbnail, gallery, shortTitle,
+  "thumbnailVideo": select(
+    defined(thumbnailVideo.asset) => {
+      "asset": thumbnailVideo.asset->{playbackId, status}
+    },
+    null
+  )
+}`);
 
 export const viewport: Viewport = {
   themeColor: "white",

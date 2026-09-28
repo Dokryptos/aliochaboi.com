@@ -4,6 +4,7 @@ import ProjectType from "@/types/project";
 import Grid from "../ui/grid";
 import CarouselNavigation from "@/components/carousel/navigation";
 import { UIImageSanity } from "../ui/image/sanity";
+import Video from "../ui/video";
 import Intro from "../intro";
 import Link from "next/link";
 import { urlForImage } from "@/sanity/lib/image";
@@ -23,6 +24,7 @@ export default function HomeComponent({ projectData }: ProjectDataProps) {
     if (!projectData) return;
 
     return projectData
+      .filter((asset) => !asset.thumbnailVideo?.asset?.playbackId)
       .map((asset) => {
         const thumbnailAsset = asset.thumbnail;
         return urlForImage(thumbnailAsset).url();
@@ -32,12 +34,14 @@ export default function HomeComponent({ projectData }: ProjectDataProps) {
   useEffect(() => {
     if (!projectData) return;
 
-    projectData.forEach((asset) => {
-      const thumbnailAsset = asset.thumbnail;
+    projectData
+      .filter((asset) => !asset.thumbnailVideo?.asset?.playbackId)
+      .forEach((asset) => {
+        const thumbnailAsset = asset.thumbnail;
 
-      const img = new Image();
-      img.src = urlForImage(thumbnailAsset).url();
-    });
+        const img = new Image();
+        img.src = urlForImage(thumbnailAsset).url();
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [preloadingKey]);
 
@@ -80,6 +84,8 @@ export default function HomeComponent({ projectData }: ProjectDataProps) {
 
   if (!projectData.length || !projectData[index]) return null;
 
+  const heroPlaybackId = projectData[index].thumbnailVideo?.asset?.playbackId;
+
   return (
     <div>
       {LoadingPage ? (
@@ -89,7 +95,7 @@ export default function HomeComponent({ projectData }: ProjectDataProps) {
           <Intro />
           <Grid className="gap-5 tablet:px-0 h-full overflow-hidden">
             <div className="pr-5 pl-5 tablet:p-0 laptop:col-start-3 justify-center laptop:col-span-8 col-start-1 col-span-4 tablet:col-start-2 tablet:col-span-7 flex">
-              <div className="flex items-center h-dvh pt-[80px] pb-[80px] tablet:pt-[110px] tablet:pb-[110px]">
+              <div className="flex items-center w-full h-dvh pt-[80px] pb-[80px] tablet:pt-[110px] tablet:pb-[110px]">
                 {showH1Animate && (
                   <motion.h1
                     className={`absolute z-40 inset-0 flex items-center justify-center mix-blend-difference text-white dekstop:text-[70px] tablet:text-[45px] text-[35px] ${isVisibleH1 ? "block" : "hidden"}`}
@@ -104,17 +110,33 @@ export default function HomeComponent({ projectData }: ProjectDataProps) {
                   href={`/${projectData[index].slug.current}`}
                   className="h-full w-full laptop:flex items-center hidden z-30"
                 >
+                  {heroPlaybackId ? (
+                    <Video
+                      key={projectData[index]._id}
+                      playbackId={heroPlaybackId}
+                      className="object-contain h-full w-full"
+                    />
+                  ) : (
+                    <UIImageSanity
+                      asset={projectData[index].thumbnail}
+                      alt="Carrousel Project Home"
+                      className="object-contain h-full w-full laptop:flex hidden"
+                    />
+                  )}
+                </Link>
+                {heroPlaybackId ? (
+                  <Video
+                    key={`${projectData[index]._id}-mobile`}
+                    playbackId={heroPlaybackId}
+                    className="object-contain w-full h-full max-h-[650px] laptop:hidden"
+                  />
+                ) : (
                   <UIImageSanity
                     asset={projectData[index].thumbnail}
                     alt="Carrousel Project Home"
-                    className="object-contain h-full w-full laptop:flex hidden"
+                    className="object-contain w-full h-full laptop:hidden flex max-h-[650px]"
                   />
-                </Link>
-                <UIImageSanity
-                  asset={projectData[index].thumbnail}
-                  alt="Carrousel Project Home"
-                  className="object-contain w-full h-full laptop:hidden flex max-h-[650px]"
-                />
+                )}
               </div>
             </div>
 

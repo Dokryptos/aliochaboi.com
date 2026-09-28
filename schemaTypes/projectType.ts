@@ -57,6 +57,13 @@ export const projectType = defineType({
         "The first image use for the presentation of the project (Obligation)",
     }),
     defineField({
+      name: "thumbnailVideo",
+      title: "Thumbnail video (optional)",
+      type: "mux.video",
+      description:
+        "Optionnel : si renseigné, remplace le Thumbnail (image) par cette vidéo sur le carrousel de la page d'accueil uniquement. Le champ Thumbnail (image) reste obligatoire et continue d'être utilisé partout ailleurs (grille et liste des projets).",
+    }),
+    defineField({
       name: "gallery",
       title: "gallery",
       type: "array",

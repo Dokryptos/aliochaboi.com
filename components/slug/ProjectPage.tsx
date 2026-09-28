@@ -1,8 +1,9 @@
 "use client";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { motion } from "framer-motion";
-import MuxPlayer from "@mux/mux-player-react/lazy";
+import MuxPlayer from "@mux/mux-player-react";
 import type { MuxCSSProperties } from "@mux/mux-player-react";
+import type MuxPlayerElement from "@mux/mux-player";
 import ProjectType from "@/types/project";
 import Grid from "../ui/grid";
 import CarouselNavigation from "@/components/carousel/navigation";
@@ -29,6 +30,8 @@ export default function ProjectPage({
   );
   const currentProject = projectsArray[currentProjectIndex];
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+  const playerRef = useRef<MuxPlayerElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   // Preloading Img (les videos sont chargees/streamees par MuxPlayer lui-meme)
   const preloadingKey = useMemo(() => {
@@ -81,30 +84,64 @@ export default function ProjectPage({
   };
 
   const currentItem = currentProject?.gallery[currentImageIndex];
+  const posterUrl =
+    currentItem?._type === "video" && currentItem.asset.playbackId
+      ? `https://image.mux.com/${currentItem.asset.playbackId}/thumbnail.jpg?time=0`
+      : undefined;
+
+  const togglePlay = (event: React.MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+    if (isPlaying) {
+      playerRef.current?.pause();
+    } else {
+      playerRef.current?.play();
+    }
+  };
 
   return (
     <Grid className="gap-5 tablet:px-0 h-full overflow-hidden">
       <div className="pr-5 pl-5 tablet:p-0 laptop:col-start-3 justify-center laptop:col-span-8 col-start-1 col-span-4 tablet:col-start-2 tablet:col-span-7 flex">
-        <div className="flex items-center h-dvh  pt-[80px] pb-[80px] laptop:pt-[120px] laptop:pb-[120px]">
+        <div className="relative flex items-center w-full h-dvh  pt-[80px] pb-[80px] laptop:pt-[120px] laptop:pb-[120px]">
           {currentItem?._type === "video" ? (
-            <MuxPlayer
-              key={currentImageIndex}
-              playbackId={currentItem.asset.playbackId}
-              streamType="on-demand"
-              autoPlay
-              volume={0.3}
-              loop
-              thumbnailTime={0}
-              placeholder={`https://image.mux.com/${currentItem.asset.playbackId}/thumbnail.jpg?time=0`}
-              style={
-                {
-                  "--controls": "none",
-                  "--media-object-fit": "contain",
-                  "--media-background-color": "transparent",
-                } as MuxCSSProperties
-              }
-              className="object-contain w-full h-full"
-            />
+            <>
+              <MuxPlayer
+                key={currentImageIndex}
+                ref={playerRef}
+                playbackId={currentItem.asset.playbackId}
+                streamType="on-demand"
+                autoPlay
+                volume={0.3}
+                loop
+                poster={posterUrl}
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+                style={
+                  {
+                    "--controls": "none",
+                    "--media-object-fit": "contain",
+                    "--media-background-color": "transparent",
+                  } as MuxCSSProperties
+                }
+                className="absolute inset-0 w-full h-full"
+              />
+              <button
+                onClick={togglePlay}
+                aria-label={isPlaying ? "Pause" : "Play"}
+                className="absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30px] h-[30px] flex items-center justify-center"
+              >
+                {isPlaying ? (
+                  <svg viewBox="0 0 24 24" className="w-6 h-6 fill-white">
+                    <rect x="5" y="4" width="4" height="16" />
+                    <rect x="15" y="4" width="4" height="16" />
+                  </svg>
+                ) : (
+                  <svg viewBox="0 0 24 24" className="w-6 h-6 fill-white">
+                    <polygon points="6,4 20,12 6,20" />
+                  </svg>
+                )}
+              </button>
+            </>
           ) : (
             <UIImageSanity
               asset={currentItem?.asset}

@@ -26,5 +26,6 @@ export default interface Project {
   shortTitle?: string;
   slug: Slug;
   thumbnail: SanityImage;
+  thumbnailVideo?: { asset: SanityVideo["asset"] } | null;
   gallery: GalleryItem[];
 }
