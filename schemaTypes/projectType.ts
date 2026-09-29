@@ -39,10 +39,26 @@ export const projectType = defineType({
         maxLength: 200,
         slugify: (input) =>
           input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
+        isUnique: async (value, context) => {
+          const { document, getClient } = context;
+          const client = getClient({ apiVersion: "2025-02-11" });
+          const id = document?._id.replace(/^drafts\./, "");
+          const params = {
+            draft: `drafts.${id}`,
+            published: id,
+            slug: value,
+          };
+          const query = `!defined(*[
+            _type == "project" &&
+            !(_id in [$draft, $published]) &&
+            slug.current == $slug
+          ][0]._id)`;
+          return await client.fetch(query, params);
+        },
       },
       validation: (rule) =>
         rule.required().error(`Required to generate a page on the website`),
-      description: `The slug is the url path of the project, Can use Generate button but try to keep it clean Without ponctuation(, . ; : ! ?) and Without (&é"'(-è_çà)=) (Obligation)`,
+      description: `The slug is the url path of the project, Can use Generate button but try to keep it clean Without ponctuation(, . ; : ! ?) and Without (&é"'(-è_çà)=) (Obligation). Doit être unique : deux projets ne peuvent pas avoir le même slug.`,
     }),
     defineField({
       name: "thumbnail",

@@ -9,6 +9,7 @@ import Intro from "../intro";
 import Link from "next/link";
 import { urlForImage } from "@/sanity/lib/image";
 import { motion } from "framer-motion";
+import { useViewMode } from "@/context/ViewModeContext";
 
 type ProjectDataProps = {
   projectData: ProjectType[]; // Liste de tous les projets
@@ -16,6 +17,12 @@ type ProjectDataProps = {
 
 export default function HomeComponent({ projectData }: ProjectDataProps) {
   const [index, setIndex] = useState(0);
+  const { homeResetKey } = useViewMode();
+
+  // Revient au premier projet quand on clique sur "Aliocha Boi" dans la navbar
+  useEffect(() => {
+    setIndex(0);
+  }, [homeResetKey]);
   const [isVisibleH1, setIsVisibleH1] = useState(true);
   const [showH1Animate, setShowH1Animate] = useState(false);
   const [LoadingPage, setLoadingPage] = useState(true);

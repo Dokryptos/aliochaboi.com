@@ -7,6 +7,8 @@ type ViewMode = "list" | "grid";
 interface ViewModeContextType {
   viewMode: ViewMode;
   setViewMode: (mode: ViewMode) => void;
+  homeResetKey: number;
+  resetHome: () => void;
 }
 
 const ViewModeContext = createContext<ViewModeContextType | undefined>(
@@ -15,9 +17,14 @@ const ViewModeContext = createContext<ViewModeContextType | undefined>(
 
 export function ViewModeProvider({ children }: { children: ReactNode }) {
   const [viewMode, setViewMode] = useState<ViewMode>("list");
+  const [homeResetKey, setHomeResetKey] = useState(0);
+
+  const resetHome = () => setHomeResetKey((key) => key + 1);
 
   return (
-    <ViewModeContext.Provider value={{ viewMode, setViewMode }}>
+    <ViewModeContext.Provider
+      value={{ viewMode, setViewMode, homeResetKey, resetHome }}
+    >
       {children}
     </ViewModeContext.Provider>
   );

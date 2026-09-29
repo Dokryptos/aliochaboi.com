@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 
 export default function LayoutNavbar() {
   const pathname = usePathname();
-  const { viewMode, setViewMode } = useViewMode();
+  const { viewMode, setViewMode, resetHome } = useViewMode();
 
   const bgColor = pathname === "/info" ? "bg-[var(--color-principal)]" : "bg-white";
 
@@ -17,7 +17,13 @@ export default function LayoutNavbar() {
     >
       <Grid className="gap-5">
         <div className="laptop:col-start-1 laptop:col-span-6 tablet:col-span-4 pl-5 tablet:flex hidden ">
-          <Link className="pt-5 pb-10" href="/">
+          <Link
+            className="pt-5 pb-10"
+            href="/"
+            onClick={() => {
+              if (pathname === "/") resetHome();
+            }}
+          >
             Aliocha Boi
           </Link>
         </div>
